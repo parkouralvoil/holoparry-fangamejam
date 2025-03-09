@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpp2y5j2rhpsx"]
+
+[ext_resource type="Texture2D" uid="uid://coh21natifqap" path="res://assets/100x100 white circle.png" id="1_54qew"]
+[ext_resource type="PackedScene" uid="uid://dx4lho5v6e6r4" path="res://skills/parry_skill.tscn" id="2_qqr4u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x25rp"]
+
+[node name="Character" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_54qew")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x25rp")
+
+[node name="ParrySkill" parent="." instance=ExtResource("2_qqr4u")]
