@@ -1,19 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpp2y5j2rhpsx"]
+[gd_scene load_steps=5 format=3 uid="uid://cpp2y5j2rhpsx"]
 
-[ext_resource type="Texture2D" uid="uid://coh21natifqap" path="res://assets/100x100 white circle.png" id="1_54qew"]
-[ext_resource type="PackedScene" uid="uid://dx4lho5v6e6r4" path="res://skills/parry_skill.tscn" id="2_qqr4u"]
+[ext_resource type="Script" uid="uid://o2t23wdgwtgl" path="res://characters/character.gd" id="1_b1u1o"]
+[ext_resource type="Texture2D" uid="uid://c1u578xhnpdbb" path="res://assets/sprites/player_temp.png" id="1_qqr4u"]
+[ext_resource type="PackedScene" uid="uid://c667wgyiuyaog" path="res://characters/character_components/hitbox.tscn" id="3_ke030"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x25rp"]
+radius = 22.0
 
-[node name="Character" type="CharacterBody2D"]
+[node name="Character" type="CharacterBody2D" node_paths=PackedStringArray("Hitbox")]
+collision_layer = 0
+script = ExtResource("1_b1u1o")
+Hitbox = NodePath("Hitbox")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_54qew")
-
-[node name="Hitbox" type="Area2D" parent="."]
+texture = ExtResource("1_qqr4u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_x25rp")
 
-[node name="ParrySkill" parent="." instance=ExtResource("2_qqr4u")]
+[node name="Hitbox" parent="." instance=ExtResource("3_ke030")]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm8pidavkgymr"]
+
+[ext_resource type="Script" uid="uid://0a5surwvwlw5" path="res://levels/beats_manager.gd" id="1_2p1vf"]
+[ext_resource type="AudioStream" uid="uid://w23ii3g088uj" path="res://assets/sounds/metronome-85688.mp3" id="2_dcvki"]
+
+[node name="BeatsManager" type="Node2D"]
+script = ExtResource("1_2p1vf")
+
+[node name="BeatTiming" type="Timer" parent="."]
+
+[node name="OnBeatWindow" type="Timer" parent="."]
+one_shot = true
+
+[node name="TestLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "On-beat window: "
+
+[node name="TestMetronome" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_dcvki")
