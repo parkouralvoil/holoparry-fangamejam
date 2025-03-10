@@ -4,9 +4,10 @@ class_name BeatsManager
 var _on_beat: bool = false:
 	set(val):
 		_on_beat = val
+		EventBus.beat_window_changed.emit(val)
 		_update_test_label()
-var _beat_timing_duration: float = 1.5
-var _onbeat_window_duration: float = 0.4
+var _beat_timing_duration: float = 1.0
+var _onbeat_window_duration: float = 0.3
 
 @onready var _BeatTiming: Timer = $BeatTiming
 @onready var _OnBeatWindow: Timer = $OnBeatWindow
