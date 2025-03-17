@@ -11,10 +11,5 @@ script = ExtResource("1_2p1vf")
 [node name="OnBeatWindow" type="Timer" parent="."]
 one_shot = true
 
-[node name="TestLabel" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "On-beat window: "
-
 [node name="TestMetronome" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_dcvki")

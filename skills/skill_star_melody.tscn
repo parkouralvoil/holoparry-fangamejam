@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqycdhi2mbpr8"]
+
+[ext_resource type="Script" uid="uid://dnhw6jf1o6drb" path="res://skills/skill_star_melody.gd" id="1_liq4a"]
+
+[node name="SkillStarMelody" type="Node2D"]
+script = ExtResource("1_liq4a")
+skill_name = "Star Melody"
+skill_cooldown = 1.0
+_combo = "101"

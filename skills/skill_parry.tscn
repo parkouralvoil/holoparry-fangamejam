@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx4lho5v6e6r4"]
+
+[ext_resource type="Script" uid="uid://c14nvm6chqwjf" path="res://skills/skill_parry.gd" id="1_njad5"]
+
+[node name="ParrySkill" type="Node2D"]
+script = ExtResource("1_njad5")
+skill_name = "Parry"
+skill_cooldown = 1.0
+_combo = "0"

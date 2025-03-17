@@ -1,16 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpp2y5j2rhpsx"]
+[gd_scene load_steps=6 format=3 uid="uid://cpp2y5j2rhpsx"]
 
 [ext_resource type="Script" uid="uid://o2t23wdgwtgl" path="res://characters/character.gd" id="1_b1u1o"]
 [ext_resource type="Texture2D" uid="uid://c1u578xhnpdbb" path="res://assets/sprites/player_temp.png" id="1_qqr4u"]
 [ext_resource type="PackedScene" uid="uid://c667wgyiuyaog" path="res://characters/character_components/hitbox.tscn" id="3_ke030"]
+[ext_resource type="PackedScene" uid="uid://dlbp1coqi5mgi" path="res://skills/moveset_tokino.tscn" id="4_mxkve"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x25rp"]
 radius = 22.0
 
-[node name="Character" type="CharacterBody2D" node_paths=PackedStringArray("Hitbox")]
+[node name="CharacterTokino" type="CharacterBody2D" node_paths=PackedStringArray("_Moveset", "_Hitbox")]
 collision_layer = 0
 script = ExtResource("1_b1u1o")
-Hitbox = NodePath("Hitbox")
+_Moveset = NodePath("TokinoMoveset")
+_Hitbox = NodePath("Hitbox")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_qqr4u")
@@ -19,3 +21,5 @@ texture = ExtResource("1_qqr4u")
 shape = SubResource("CircleShape2D_x25rp")
 
 [node name="Hitbox" parent="." instance=ExtResource("3_ke030")]
+
+[node name="TokinoMoveset" parent="." instance=ExtResource("4_mxkve")]
