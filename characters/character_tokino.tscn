@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpp2y5j2rhpsx"]
+[gd_scene load_steps=7 format=3 uid="uid://cpp2y5j2rhpsx"]
 
 [ext_resource type="Script" uid="uid://o2t23wdgwtgl" path="res://characters/character.gd" id="1_b1u1o"]
-[ext_resource type="Texture2D" uid="uid://c1u578xhnpdbb" path="res://assets/sprites/player_temp.png" id="1_qqr4u"]
+[ext_resource type="Texture2D" uid="uid://bhyr5u6cn2u2" path="res://assets/sprites/holoparry_spritesheet.png" id="2_mxkve"]
 [ext_resource type="PackedScene" uid="uid://c667wgyiuyaog" path="res://characters/character_components/hitbox.tscn" id="3_ke030"]
 [ext_resource type="PackedScene" uid="uid://dlbp1coqi5mgi" path="res://skills/moveset_tokino.tscn" id="4_mxkve"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_es64v"]
+atlas = ExtResource("2_mxkve")
+region = Rect2(32, 53, 29, 36)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_x25rp"]
-radius = 22.0
+radius = 16.0312
 
 [node name="CharacterTokino" type="CharacterBody2D" node_paths=PackedStringArray("_Moveset", "_Hitbox")]
 collision_layer = 0
@@ -15,7 +19,7 @@ _Moveset = NodePath("TokinoMoveset")
 _Hitbox = NodePath("Hitbox")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_qqr4u")
+texture = SubResource("AtlasTexture_es64v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_x25rp")

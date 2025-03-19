@@ -14,6 +14,10 @@ var _player_combo: Array[PT.Combo] = []:
 	set(val):
 		_player_combo = val
 		print_debug("hello")
+var _rotation_speed: float = TAU * 3 # TAU is a full circle, this is 2 full rotations per sec
+var _theta: float
+
+@onready var _Sprite: Sprite2D = $Sprite2D
 
 func _ready() -> void:
 	# this gets called at the start of the scene
@@ -55,7 +59,11 @@ func _clear_combo() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	velocity = _move_direction * _speed
+	velocity = _move_direction.normalized() * _speed
+	if _move_direction != Vector2.ZERO:
+		_theta = wrapf(atan2(_move_direction.y, _move_direction.x) - _Sprite.rotation + PI/2, 
+				-PI, PI)
+		_Sprite.rotation += clamp(_rotation_speed * delta, 0, abs(_theta)) * sign(_theta)
 	move_and_slide()
 
 
@@ -83,5 +91,5 @@ func _on_beat_window_changed(active: bool) -> void:
 	_beat_window_active = active
 
 
-func _on_hit() -> void:
+func _on_hit(dmg: float) -> void:
 	print_debug("ouch i got hit")
