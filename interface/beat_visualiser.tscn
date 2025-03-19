@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://bi5g78vqtaklg"]
+
+[ext_resource type="Script" uid="uid://de8lvgc1cq1yr" path="res://interface/beat_visualiser.gd" id="1_gy0et"]
+[ext_resource type="Texture2D" uid="uid://ddxrwcuw4f7o4" path="res://assets/beat_visual/hit_marker.png" id="2_gy0et"]
+
+[sub_resource type="Animation" id="Animation_gy0et"]
+resource_name = "pulsating"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06),
+"transitions": PackedFloat32Array(0.937501, 0.594602),
+"update": 0,
+"values": [Vector2(1.15, 1.15), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_w3i15"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kdp3e"]
+_data = {
+&"RESET": SubResource("Animation_w3i15"),
+&"pulsating": SubResource("Animation_gy0et")
+}
+
+[node name="BeatVisualiser" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gy0et")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -99.0
+offset_top = -201.0
+offset_right = 101.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(100, 100)
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_gy0et")
+expand_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/TextureRect"]
+libraries = {
+&"": SubResource("AnimationLibrary_kdp3e")
+}
