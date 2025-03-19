@@ -15,7 +15,7 @@ func _ready() -> void:
 			combo.append(PT.Combo.DOWN)
 		else:
 			combo.append(PT.Combo.UP)
-	print(combo)
 
-func activate_skill() -> void:
+
+func activate_skill(from_enemy: bool = false) -> void:
 	pass

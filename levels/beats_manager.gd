@@ -7,7 +7,7 @@ var _on_beat: bool = false:
 		EventBus.beat_window_changed.emit(val)
 # dependent on song choice, will need smth to handle these
 var _beat_timing_duration: float = 60.0 / 150.0
-var _onbeat_window_duration: float = 60.0 / 150.0 * 0.35
+var _onbeat_window_duration: float = 60.0 / 150.0 * 0.6
 
 @onready var _BeatTiming: Timer = $BeatTiming
 @onready var _OnBeatWindow: Timer = $OnBeatWindow

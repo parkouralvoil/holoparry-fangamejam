@@ -17,3 +17,9 @@ func try_activate_skill(performed_combo: Array[PT.Combo]) -> void:
 			skill.activate_skill()
 			return
 	print_debug("no skill found")
+
+
+func enemy_use_skill(index: int) -> void:
+	## for enemies to easily cast a skill
+	if _skill_array.size() > index:
+		_skill_array[index].activate_skill(true)
