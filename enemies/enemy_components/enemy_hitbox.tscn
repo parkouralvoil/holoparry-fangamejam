@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://x4b7bh1iuyak"]
+
+[ext_resource type="Script" uid="uid://cqju2lpfay41s" path="res://characters/character_components/hitbox.gd" id="1_qcvhs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qqr4u"]
+radius = 11.0
+
+[node name="EnemyHitbox" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_qcvhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qqr4u")
+debug_color = Color(0.690013, 0.253963, 0.446783, 0.42)

@@ -8,5 +8,7 @@
 script = ExtResource("1_pnobm")
 
 [node name="ParrySkill" parent="." instance=ExtResource("1_perae")]
+visible = false
 
 [node name="StarMelody" parent="." instance=ExtResource("3_6gl5l")]
+visible = false

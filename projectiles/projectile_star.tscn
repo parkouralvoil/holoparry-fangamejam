@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://4dqwmqw1wq16"]
+[gd_scene load_steps=6 format=3 uid="uid://4dqwmqw1wq16"]
 
 [ext_resource type="Texture2D" uid="uid://bhyr5u6cn2u2" path="res://assets/sprites/holoparry_spritesheet.png" id="1_225my"]
+[ext_resource type="PackedScene" uid="uid://b46r3coymwvrh" path="res://projectiles/projectile_hurtbox.tscn" id="2_qqe28"]
 [ext_resource type="Script" uid="uid://fewdbcnbkn2v" path="res://projectiles/projectile_star.gd" id="2_u0g87"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fwgqv"]
-radius = 15.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_u0g87"]
+radius = 12.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qqe28"]
 atlas = ExtResource("1_225my")
@@ -12,16 +13,13 @@ region = Rect2(129, 105, 54, 52)
 
 [node name="ProjectileStar" type="Node2D" node_paths=PackedStringArray("_Hurtbox", "_Sprite")]
 script = ExtResource("2_u0g87")
-_Hurtbox = NodePath("Hurtbox")
+_Hurtbox = NodePath("ProjectileHurtbox")
 _Sprite = NodePath("Sprite2D")
 
-[node name="Hurtbox" type="Area2D" parent="."]
-collision_layer = 4
-monitoring = false
-monitorable = false
+[node name="ProjectileHurtbox" parent="." instance=ExtResource("2_qqe28")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("CircleShape2D_fwgqv")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileHurtbox"]
+shape = SubResource("CircleShape2D_u0g87")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 0.431373, 1)

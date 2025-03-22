@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh2u76ljnta6y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s0nvv"]
+radius = 59.0085
+
+[node name="EnemyParryBehavior" type="Area2D"]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_s0nvv")
+debug_color = Color(0.305466, 0.554097, 0.792073, 0.42)

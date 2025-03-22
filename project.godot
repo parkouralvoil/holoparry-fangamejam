@@ -71,11 +71,13 @@ beat_activate={
 
 [layer_names]
 
-2d_physics/layer_1="World"
-2d_physics/layer_2="Character A Hitbox"
-2d_physics/layer_3="Attack Hurtbox"
-2d_physics/layer_4="Parry Checkbox"
-2d_physics/layer_5="Character B Hitbox"
+2d_physics/layer_1="Character A Hitbox"
+2d_physics/layer_2="Character B Hitbox"
+2d_physics/layer_3="Parry A Checkbox"
+2d_physics/layer_4="Parry B Checkbox"
+2d_physics/layer_5="World"
+2d_physics/layer_6="Projectile A"
+2d_physics/layer_7="Projectile B"
 
 [rendering]
 

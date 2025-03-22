@@ -5,6 +5,7 @@ class_name BaseEnemy
 
 @export var _Moveset: BaseMoveset
 @export var _Hitbox: BaseHitbox
+@export var _EnemyParryBehavior: Area2D
 @export var _move_timer_duration: float
 
 var _move_direction: Vector2
@@ -46,6 +47,12 @@ func _physics_process(delta: float) -> void:
 
 func _on_beat_window_changed(active: bool) -> void:
 	if active:
+		if _EnemyParryBehavior.has_overlapping_areas():
+			#for a in _EnemyParryBehavior.get_overlapping_areas():
+			#	print(a.get_collision_layer_value(3), a.get_collision_layer_value(4))
+			_Moveset.enemy_use_skill(0)
+			_attack_counter = _attack_threshold
+			return
 		if _attack_counter >= _attack_threshold:
 			_Moveset.enemy_use_skill(1)
 			_attack_counter = 0

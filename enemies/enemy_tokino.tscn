@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://3jl7e2h37swr"]
+[gd_scene load_steps=8 format=3 uid="uid://3jl7e2h37swr"]
 
 [ext_resource type="Script" uid="uid://geugbxe4mjfd" path="res://enemies/enemy_tokino.gd" id="1_s0nvv"]
 [ext_resource type="Texture2D" uid="uid://bhyr5u6cn2u2" path="res://assets/sprites/holoparry_spritesheet.png" id="2_35sme"]
-[ext_resource type="PackedScene" uid="uid://c667wgyiuyaog" path="res://characters/character_components/hitbox.tscn" id="3_fwmlk"]
+[ext_resource type="PackedScene" uid="uid://x4b7bh1iuyak" path="res://enemies/enemy_components/enemy_hitbox.tscn" id="3_s0nvv"]
 [ext_resource type="PackedScene" uid="uid://dlbp1coqi5mgi" path="res://skills/moveset_tokino.tscn" id="4_ubux1"]
+[ext_resource type="PackedScene" uid="uid://dh2u76ljnta6y" path="res://enemies/enemy_components/enemy_parry_behavior.tscn" id="5_35sme"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_es64v"]
 atlas = ExtResource("2_35sme")
@@ -12,11 +13,13 @@ region = Rect2(73, 53, 30, 36)
 [sub_resource type="CircleShape2D" id="CircleShape2D_x25rp"]
 radius = 16.0312
 
-[node name="EnemyTokino" type="CharacterBody2D" node_paths=PackedStringArray("_Moveset", "_Hitbox")]
+[node name="EnemyTokino" type="CharacterBody2D" node_paths=PackedStringArray("_Moveset", "_Hitbox", "_EnemyParryBehavior")]
 collision_layer = 0
+collision_mask = 16
 script = ExtResource("1_s0nvv")
 _Moveset = NodePath("TokinoMoveset")
 _Hitbox = NodePath("EnemyHitbox")
+_EnemyParryBehavior = NodePath("EnemyParryBehavior")
 _move_timer_duration = 0.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -24,12 +27,15 @@ texture = SubResource("AtlasTexture_es64v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_x25rp")
+debug_color = Color(0.503033, 0.566577, 0.360544, 0.42)
 
-[node name="EnemyHitbox" parent="." instance=ExtResource("3_fwmlk")]
-collision_layer = 16
-collision_mask = 0
+[node name="EnemyHitbox" parent="." instance=ExtResource("3_s0nvv")]
+
+[node name="EnemyParryBehavior" parent="." instance=ExtResource("5_35sme")]
+collision_mask = 4
 
 [node name="TokinoMoveset" parent="." instance=ExtResource("4_ubux1")]
+from_enemy = true
 
 [node name="MoveTimer" type="Timer" parent="."]
 wait_time = 3.0
