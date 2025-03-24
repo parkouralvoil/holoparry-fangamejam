@@ -18,6 +18,8 @@ var _player_combo: Array[PT.Combo] = []:
 var _rotation_speed: float = TAU * 4 # TAU is a full circle, this is 4 full rotations per sec
 var _theta: float
 
+var _hp: int = 100
+
 @onready var _Sprite: Sprite2D = $Sprite2D
 
 func _ready() -> void:
@@ -26,6 +28,8 @@ func _ready() -> void:
 	assert(_Hitbox)
 	EventBus.beat_window_changed.connect(_on_beat_window_changed)
 	_Hitbox.got_hit.connect(_on_hit)
+	
+	EventBus.player_hp_updated.emit(_hp)
 
 
 func _process(delta: float) -> void:
@@ -103,3 +107,5 @@ func _on_beat_window_changed(active: bool) -> void:
 
 func _on_hit(dmg: float) -> void:
 	print_debug("ouch i got hit")
+	_hp -= 1
+	EventBus.player_hp_updated.emit(_hp)

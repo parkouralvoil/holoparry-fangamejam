@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cq6rbvv0vku06"]
+[gd_scene load_steps=3 format=3 uid="uid://cq6rbvv0vku06"]
 
 [ext_resource type="Script" uid="uid://dmvpcdpyun8lr" path="res://interface/player_interface.gd" id="1_mh0db"]
+[ext_resource type="Texture2D" uid="uid://bsm4p8up35xyf" path="res://icon.svg" id="2_ngni7"]
 
 [node name="PlayerInterface" type="Control"]
 layout_mode = 3
@@ -10,6 +11,67 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mh0db")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -220.0
+offset_bottom = 60.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Skills" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Skill1" type="TextureRect" parent="HBoxContainer/VBoxContainer/Skills"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+texture = ExtResource("2_ngni7")
+expand_mode = 1
+
+[node name="Skill2" type="TextureRect" parent="HBoxContainer/VBoxContainer/Skills"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+texture = ExtResource("2_ngni7")
+expand_mode = 1
+
+[node name="Skill3" type="TextureRect" parent="HBoxContainer/VBoxContainer/Skills"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+texture = ExtResource("2_ngni7")
+expand_mode = 1
+
+[node name="Skill4" type="TextureRect" parent="HBoxContainer/VBoxContainer/Skills"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+texture = ExtResource("2_ngni7")
+expand_mode = 1
+
+[node name="HPBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+step = 1.0
+value = 100.0
+
+[node name="Character" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+texture = ExtResource("2_ngni7")
+expand_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
