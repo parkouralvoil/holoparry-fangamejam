@@ -6,7 +6,6 @@ class_name SkillParry
 
 func _ready() -> void:
 	_ParryCircle.successful_parry.connect(_on_successful_parry)
-	_ParryCircle.hide()
 	_ParryAttackRemover.hide()
 	_ParryAttackRemover.top_level = true
 	super()

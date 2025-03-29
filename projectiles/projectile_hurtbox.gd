@@ -6,7 +6,7 @@ This hurtbox will only have a collision layers and masks once its set by its
 parent BaseProjectile
 """
 
-func set_collisions(from_enemy: bool, parryable: bool):
+func set_collisions(from_enemy: bool, parryable: bool) -> void:
 	_collide_with_world()
 	if from_enemy: ## projectile B
 		_target_character()

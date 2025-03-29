@@ -3,15 +3,16 @@ class_name BaseSkill
 
 @export var skill_name: String
 @export var skill_cooldown: float
-@export var _combo: String ## example: 101 means UP DOWN UP
+@export var string_combo: String ## example: 101 means UP DOWN UP
+@export_range(0, 1) var attack_parriable_chance: float ## parry skill excluded
 var combo: Array[PT.Combo]
 var _from_enemy: bool
 
 func _ready() -> void:
 	## set combo:
-	assert(_combo.count("0") + _combo.count("1") == _combo.length(),
+	assert(string_combo.count("0") + string_combo.count("1") == string_combo.length(),
 			"Invalid combo set for %s" % name)
-	for c in _combo:
+	for c in string_combo:
 		if c == "0":
 			combo.append(PT.Combo.DOWN)
 		else:
@@ -19,7 +20,7 @@ func _ready() -> void:
 	#print_debug(_combo)
 
 
-func set_skill_collisions(from_enemy: bool): ## set by BaseMoveset
+func set_skill_collisions(from_enemy: bool) -> void: ## set by BaseMoveset
 	_from_enemy = from_enemy
 
 

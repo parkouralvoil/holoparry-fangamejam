@@ -4,9 +4,9 @@ class_name BaseProjectile
 @export var _Hurtbox: ProjectileHurtbox
 @export var _Sprite: Sprite2D
 
-@export_category("Projectile Stats")
-@export var damage: float = 10
-@export var speed: float = 250
+@export_category("Projectile Stats") ## no longer export, these are set by the skills
+var damage: float = 10
+var speed: float = 250
 
 var direction: Vector2 = Vector2.RIGHT
 var from_enemy: bool = false
@@ -17,7 +17,15 @@ func _ready() -> void:
 	_Hurtbox.area_entered.connect(_on_area_entered)
 	_Hurtbox.body_entered.connect(_on_body_entered)
 	if from_enemy:
-		_Sprite.modulate = Color.ORANGE_RED
+		if parryable:
+			_Sprite.modulate = Color.YELLOW
+		else:
+			_Sprite.modulate = Color.ORANGE_RED
+	else:
+		if parryable:
+			_Sprite.modulate = Color.VIOLET
+		else:
+			_Sprite.modulate = Color.SKY_BLUE
 	_Hurtbox.set_collisions(from_enemy, parryable)
 
 

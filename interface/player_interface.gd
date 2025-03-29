@@ -1,11 +1,9 @@
 extends Control
 class_name PlayerInterface
 
-var _combo_string: String = ""
-
 @onready var _OnBeatLabel: Label = %OnBeat
 @onready var _ComboLabel: Label = %Combo
-@onready var _HPBar: ProgressBar = $HBoxContainer/VBoxContainer/HPBar
+#@onready var _HPBar: ProgressBar = $HBoxContainer/VBoxContainer/HPBar
 
 func _ready() -> void:
 	EventBus.beat_window_changed.connect(_on_beat_window_changed)
@@ -30,7 +28,7 @@ func _on_player_combo_updated(new_combo: Array[PT.Combo]) -> void:
 	_ComboLabel.text = new_text
 
 func _on_player_hp_updated(new_hp: int) -> void:
-	_HPBar.value = new_hp
+	pass #_HPBar.value = new_hp
 
 func _on_beat_window_changed(active: bool) -> void:
 	_OnBeatLabel.text = "On-beat window: " + str(active)

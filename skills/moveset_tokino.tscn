@@ -1,14 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlbp1coqi5mgi"]
+[gd_scene load_steps=6 format=3 uid="uid://dlbp1coqi5mgi"]
 
 [ext_resource type="PackedScene" uid="uid://dx4lho5v6e6r4" path="res://skills/skill_parry.tscn" id="1_perae"]
 [ext_resource type="Script" uid="uid://dkbe0kvuqn6ix" path="res://skills/base_moveset.gd" id="1_pnobm"]
-[ext_resource type="PackedScene" uid="uid://cqycdhi2mbpr8" path="res://skills/skill_star_melody.tscn" id="3_6gl5l"]
+[ext_resource type="PackedScene" uid="uid://cqycdhi2mbpr8" path="res://skills/skills_tokino/skill_star_melody.tscn" id="3_6gl5l"]
+[ext_resource type="PackedScene" uid="uid://k5amd73w1e4p" path="res://skills/skills_tokino/skill_stage_set.tscn" id="4_cwa7b"]
+[ext_resource type="PackedScene" uid="uid://dhumtif3ucnfo" path="res://skills/skills_tokino/skill_dream.tscn" id="5_8vw5b"]
 
 [node name="TokinoMoveset" type="Node2D"]
 script = ExtResource("1_pnobm")
 
 [node name="ParrySkill" parent="." instance=ExtResource("1_perae")]
 visible = false
+string_combo = "0"
 
 [node name="StarMelody" parent="." instance=ExtResource("3_6gl5l")]
 visible = false
+string_combo = "101"
+attack_parriable_chance = 0.1
+
+[node name="StageSet" parent="." instance=ExtResource("4_cwa7b")]
+visible = false
+
+[node name="Dream" parent="." instance=ExtResource("5_8vw5b")]

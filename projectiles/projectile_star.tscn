@@ -15,6 +15,7 @@ region = Rect2(129, 105, 54, 52)
 script = ExtResource("2_u0g87")
 _Hurtbox = NodePath("ProjectileHurtbox")
 _Sprite = NodePath("Sprite2D")
+speed = 275.0
 
 [node name="ProjectileHurtbox" parent="." instance=ExtResource("2_qqe28")]
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpp2y5j2rhpsx"]
+[gd_scene load_steps=8 format=3 uid="uid://cpp2y5j2rhpsx"]
 
 [ext_resource type="Script" uid="uid://o2t23wdgwtgl" path="res://characters/character.gd" id="1_b1u1o"]
 [ext_resource type="Texture2D" uid="uid://bhyr5u6cn2u2" path="res://assets/sprites/holoparry_spritesheet.png" id="2_mxkve"]
 [ext_resource type="PackedScene" uid="uid://c667wgyiuyaog" path="res://characters/character_components/character_hitbox.tscn" id="3_ke030"]
 [ext_resource type="PackedScene" uid="uid://dlbp1coqi5mgi" path="res://skills/moveset_tokino.tscn" id="4_mxkve"]
+[ext_resource type="Resource" uid="uid://cflfyogpk7t1i" path="res://interface/player_interface_components/player_info_state.tres" id="5_es64v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_es64v"]
 atlas = ExtResource("2_mxkve")
@@ -28,3 +29,4 @@ shape = SubResource("CircleShape2D_x25rp")
 [node name="Hitbox" parent="." instance=ExtResource("3_ke030")]
 
 [node name="TokinoMoveset" parent="." instance=ExtResource("4_mxkve")]
+_ui_resource_state = ExtResource("5_es64v")

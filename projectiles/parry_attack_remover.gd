@@ -1,7 +1,6 @@
 extends Node2D
 class_name ParryAttackRemover
 
-var _visible_duration: float = 0.2
 var _parry_from_enemy: bool = false
 
 @onready var _sprite: Sprite2D = $Sprite2D
@@ -29,14 +28,20 @@ func activate() -> void:
 		if area.owner is BaseProjectile:
 			var p: BaseProjectile = area.owner
 			p.queue_free()
+	await _tween_await_expanding_circle()
+	hide()
+
+
+func _tween_await_expanding_circle() -> void:
 	var t := create_tween()
+	var visible_duration: float = 0.2
 	t.tween_property(_sprite, "scale", Vector2(4, 4), 
-			_visible_duration).from(Vector2.ZERO)
+			visible_duration).from(Vector2.ZERO)
 	if _parry_from_enemy:
 		t.parallel().tween_property(_sprite, "modulate", Color(1, 0.4, 0.2, 0.3), 
-				_visible_duration).from(Color(1, 0.4, 0.2, 0.8))
+				visible_duration).from(Color(1, 0.4, 0.2, 0.8))
 	else:
 		t.parallel().tween_property(_sprite, "modulate", Color(0.2, 0.4, 1, 0.3), 
-				_visible_duration).from(Color(0.2, 0.4, 1, 0.8))
+				visible_duration).from(Color(0.2, 0.4, 1, 0.8))
 	await t.finished
-	hide()
+	return

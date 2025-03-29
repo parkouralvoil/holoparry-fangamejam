@@ -6,3 +6,5 @@ extends Node
 
 var player_global_position: Vector2
 var enemy_global_position: Vector2
+
+@onready var RNG: RandomNumberGenerator = RandomNumberGenerator.new()
