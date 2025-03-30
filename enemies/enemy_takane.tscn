@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://dkjy1fk4xv7dj"]
+
+[ext_resource type="Script" uid="uid://xn054dkawdxf" path="res://enemies/enemy_takane.gd" id="1_jqbmu"]
+[ext_resource type="Texture2D" uid="uid://bhyr5u6cn2u2" path="res://assets/sprites/holoparry_spritesheet.png" id="3_xq2ob"]
+[ext_resource type="PackedScene" uid="uid://x4b7bh1iuyak" path="res://enemies/enemy_components/enemy_hitbox.tscn" id="4_k61lu"]
+[ext_resource type="PackedScene" uid="uid://dh2u76ljnta6y" path="res://enemies/enemy_components/enemy_parry_behavior.tscn" id="5_b77q6"]
+[ext_resource type="PackedScene" uid="uid://dlbp1coqi5mgi" path="res://skills/moveset_tokino.tscn" id="6_d1x8s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_es64v"]
+atlas = ExtResource("3_xq2ob")
+region = Rect2(73, 53, 30, 36)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x25rp"]
+radius = 16.0312
+
+[node name="EnemyTokino" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_jqbmu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_es64v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x25rp")
+debug_color = Color(0.503033, 0.566577, 0.360544, 0.42)
+
+[node name="EnemyHitbox" parent="." instance=ExtResource("4_k61lu")]
+
+[node name="EnemyParryBehavior" parent="." instance=ExtResource("5_b77q6")]
+collision_mask = 4
+
+[node name="TokinoMoveset" parent="." instance=ExtResource("6_d1x8s")]
+from_enemy = true
+
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="ParryTimer" type="Timer" parent="."]
+one_shot = true
