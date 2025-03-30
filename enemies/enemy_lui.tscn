@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://dkjy1fk4xv7dj"]
+
+[ext_resource type="Script" uid="uid://geugbxe4mjfd" path="res://enemies/enemy.gd" id="1_ybhht"]
+[ext_resource type="Texture2D" uid="uid://bhyr5u6cn2u2" path="res://assets/sprites/holoparry_spritesheet.png" id="2_u4q3x"]
+[ext_resource type="PackedScene" uid="uid://x4b7bh1iuyak" path="res://enemies/enemy_components/enemy_hitbox.tscn" id="3_wjfph"]
+[ext_resource type="PackedScene" uid="uid://dh2u76ljnta6y" path="res://enemies/enemy_components/enemy_parry_behavior.tscn" id="4_5gryf"]
+[ext_resource type="PackedScene" uid="uid://cd8l644ska776" path="res://skills/moveset_lui.tscn" id="5_ybhht"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_es64v"]
+atlas = ExtResource("2_u4q3x")
+region = Rect2(73, 53, 30, 36)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x25rp"]
+radius = 16.0312
+
+[node name="EnemyLui" type="CharacterBody2D" node_paths=PackedStringArray("_Moveset", "_Hitbox", "_EnemyParryBehavior")]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_ybhht")
+_Moveset = NodePath("LuiMoveset")
+_Hitbox = NodePath("EnemyHitbox")
+_EnemyParryBehavior = NodePath("EnemyParryBehavior")
+_move_timer_duration = 0.5
+_parry_timer_duration = 7.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_es64v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x25rp")
+debug_color = Color(0.503033, 0.566577, 0.360544, 0.42)
+
+[node name="EnemyHitbox" parent="." instance=ExtResource("3_wjfph")]
+
+[node name="EnemyParryBehavior" parent="." instance=ExtResource("4_5gryf")]
+collision_mask = 4
+
+[node name="LuiMoveset" parent="." instance=ExtResource("5_ybhht")]
+from_enemy = true
+
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="ParryTimer" type="Timer" parent="."]
+one_shot = true
