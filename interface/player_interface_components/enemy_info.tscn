@@ -1,23 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjj7jv27knuec"]
+[gd_scene load_steps=6 format=3 uid="uid://bds35rjmy71sn"]
 
-[ext_resource type="Script" uid="uid://cn8gco1x8g5r1" path="res://interface/player_interface_components/character_info.gd" id="1_3oo3u"]
-[ext_resource type="Texture2D" uid="uid://bsm4p8up35xyf" path="res://icon.svg" id="1_ihxx7"]
+[ext_resource type="Script" uid="uid://cn8gco1x8g5r1" path="res://interface/player_interface_components/character_info.gd" id="1_yajgu"]
+[ext_resource type="Texture2D" uid="uid://bsm4p8up35xyf" path="res://icon.svg" id="2_6yscr"]
+[ext_resource type="Resource" uid="uid://b4cpdtlev4jeg" path="res://interface/player_interface_components/enemy_info_state.tres" id="2_tc80r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3oo3u"]
 bg_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vex74"]
-bg_color = Color(0.349697, 0.625674, 0.857558, 1)
+bg_color = Color(0.925631, 0.36023, 0.669896, 1)
 
-[node name="PlayerInfo" type="Control"]
+[node name="EnemyInfo" type="Control"]
 layout_mode = 3
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -168.0
-offset_right = 220.0
-grow_vertical = 0
-script = ExtResource("1_3oo3u")
+anchors_preset = 0
+offset_right = 264.0
+offset_bottom = 168.0
+script = ExtResource("1_yajgu")
+_resource_state = ExtResource("2_tc80r")
 
 [node name="VBox" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -28,21 +27,25 @@ grow_vertical = 2
 
 [node name="LabelParry" type="Label" parent="VBox"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "- Parry:"
 
 [node name="LabelSkill1" type="Label" parent="VBox"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "- Skill 1:"
 
 [node name="LabelSkill2" type="Label" parent="VBox"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "- Skill 2: "
 
 [node name="LabelSkill3" type="Label" parent="VBox"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "- Skill 3: "
 
@@ -50,14 +53,6 @@ text = "- Skill 3: "
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
-
-[node name="Character" type="TextureRect" parent="VBox/HBox"]
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 4
-texture = ExtResource("1_ihxx7")
-expand_mode = 3
 
 [node name="HPBar" type="ProgressBar" parent="VBox/HBox"]
 unique_name_in_owner = true
@@ -68,3 +63,11 @@ size_flags_vertical = 8
 theme_override_styles/background = SubResource("StyleBoxFlat_3oo3u")
 theme_override_styles/fill = SubResource("StyleBoxFlat_vex74")
 step = 1.0
+
+[node name="Character" type="TextureRect" parent="VBox/HBox"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+texture = ExtResource("2_6yscr")
+expand_mode = 3

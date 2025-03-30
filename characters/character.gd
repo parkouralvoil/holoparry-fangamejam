@@ -2,10 +2,10 @@ extends CharacterBody2D
 class_name BaseCharacter
 
 ## Base character class for controllable vtubers
-
 @export var _Moveset: BaseMoveset
 @export var _Hitbox: BaseHitbox
 
+var _character_resource_state: CharacterInfoState
 
 var _move_direction: Vector2
 var _face_direction: Vector2 = _move_direction
@@ -18,18 +18,23 @@ var _player_combo: Array[PT.Combo] = []:
 var _rotation_speed: float = TAU * 4 # TAU is a full circle, this is 4 full rotations per sec
 var _theta: float
 
-var _hp: int = 100
-
 @onready var _Sprite: Sprite2D = $Sprite2D
+
+
+func initialize_resource_state(state: CharacterInfoState) -> void:
+	## called by round manager
+	_character_resource_state = state
+
 
 func _ready() -> void:
 	# this gets called at the start of the scene
 	assert(_Moveset)
 	assert(_Hitbox)
+	assert(_character_resource_state)
 	EventBus.beat_window_changed.connect(_on_beat_window_changed)
+	_Moveset.assign_resource_state(_character_resource_state)
 	_Hitbox.got_hit.connect(_on_hit)
-	
-	EventBus.player_hp_updated.emit(_hp)
+	_character_resource_state.initialize_hp()
 
 
 func _process(delta: float) -> void:
@@ -105,7 +110,6 @@ func _on_beat_window_changed(active: bool) -> void:
 	_beat_window_active = active
 
 
-func _on_hit(dmg: float) -> void:
-	print_debug("ouch i got hit")
-	_hp -= 1
-	EventBus.player_hp_updated.emit(_hp)
+func _on_hit(dmg: int) -> void:
+	_character_resource_state.take_damage(dmg)
+	##EventBus.player_hp_updated.emit(_hp)

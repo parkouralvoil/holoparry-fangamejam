@@ -9,6 +9,8 @@ class_name BaseEnemy
 @export var _move_timer_duration: float
 @export var _parry_timer_duration: float
 
+var _character_resource_state: CharacterInfoState
+
 var _move_direction: Vector2
 var _face_direction: Vector2 = _move_direction
 var _speed: float = 100.0
@@ -23,14 +25,22 @@ var _attack_threshold: int = 4
 @onready var _ParryTimer: Timer = $ParryTimer
 @onready var _RNG: RandomNumberGenerator = RandomNumberGenerator.new()
 
+
+func initialize_resource_state(state: CharacterInfoState) -> void:
+	## called by round manager
+	_character_resource_state = state
+
+
 func _ready() -> void:
 	# this gets called at the start of the scene
 	assert(_Moveset)
 	assert(_Hitbox)
+	assert(_character_resource_state) ## doesnt need to pass it to tokino moveset
 	EventBus.beat_window_changed.connect(_on_beat_window_changed)
 	_Hitbox.got_hit.connect(_on_hit)
 	_MoveTimer.start(_move_timer_duration)
 	_MoveTimer.timeout.connect(_on_move_timer_timeout)
+	_character_resource_state.initialize_hp()
 
 
 func _process(delta: float) -> void:
@@ -84,4 +94,4 @@ func _on_move_timer_timeout() -> void:
 
 
 func _on_hit(dmg: float) -> void:
-	print_debug("beep boop i got hit")
+	_character_resource_state.take_damage(dmg)

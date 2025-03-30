@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CharacterInfoState" load_steps=2 format=3 uid="uid://b4cpdtlev4jeg"]
+
+[ext_resource type="Script" uid="uid://ly8vqajl0r6d" path="res://interface/player_interface_components/character_info_state.gd" id="1_pt234"]
+
+[resource]
+script = ExtResource("1_pt234")
+max_hp = 400
+metadata/_custom_type_script = "uid://ly8vqajl0r6d"
