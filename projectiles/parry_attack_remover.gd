@@ -25,9 +25,8 @@ func activate() -> void:
 	for area in _removerBox.get_overlapping_areas():
 		if not area.owner:
 			continue
-		if area.owner is BaseProjectile:
-			var p: BaseProjectile = area.owner
-			p.queue_free()
+		var area_parent: Node2D = area.owner
+		area_parent.queue_free()
 	await _tween_await_expanding_circle()
 	hide()
 

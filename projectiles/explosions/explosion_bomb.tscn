@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://wssfv8kf123q"]
+
+[ext_resource type="Script" uid="uid://dp04d2jmor6wv" path="res://projectiles/explosions/explosion_bomb.gd" id="1_nn0ok"]
+[ext_resource type="PackedScene" uid="uid://b46r3coymwvrh" path="res://projectiles/projectile_hurtbox.tscn" id="2_l0s1y"]
+[ext_resource type="Texture2D" uid="uid://bhyr5u6cn2u2" path="res://assets/sprites/holoparry_spritesheet.png" id="2_m2jlg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1igbi"]
+atlas = ExtResource("2_m2jlg")
+region = Rect2(37, 121, 31, 31)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0y6oc"]
+radius = 73.0069
+
+[node name="ExplosionBomb" type="Node2D" node_paths=PackedStringArray("_Hurtbox", "_Sprite")]
+modulate = Color(1, 1, 1, 0.67451)
+script = ExtResource("1_nn0ok")
+_Hurtbox = NodePath("ProjectileHurtbox")
+_Sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = SubResource("AtlasTexture_1igbi")
+
+[node name="ProjectileHurtbox" parent="." instance=ExtResource("2_l0s1y")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileHurtbox"]
+shape = SubResource("CircleShape2D_0y6oc")

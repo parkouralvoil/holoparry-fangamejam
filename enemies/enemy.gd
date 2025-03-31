@@ -60,8 +60,6 @@ func _physics_process(delta: float) -> void:
 func _on_beat_window_changed(active: bool) -> void:
 	if active:
 		if _EnemyParryBehavior.has_overlapping_areas() and _ParryTimer.is_stopped():
-			#for a in _EnemyParryBehavior.get_overlapping_areas():
-			#	print(a.get_collision_layer_value(3), a.get_collision_layer_value(4))
 			_ParryTimer.start(_parry_timer_duration)
 			_Moveset.enemy_use_skill(0)
 			_attack_counter = _attack_threshold

@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhawgw10ec3kj"]
+
+[ext_resource type="Script" uid="uid://o2t23wdgwtgl" path="res://characters/character.gd" id="1_1384x"]
+[ext_resource type="Texture2D" uid="uid://bhyr5u6cn2u2" path="res://assets/sprites/holoparry_spritesheet.png" id="2_e4nd2"]
+[ext_resource type="PackedScene" uid="uid://c667wgyiuyaog" path="res://characters/character_components/character_hitbox.tscn" id="3_iwbaf"]
+[ext_resource type="PackedScene" uid="uid://cd8l644ska776" path="res://skills/moveset_lui.tscn" id="4_1384x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_es64v"]
+atlas = ExtResource("2_e4nd2")
+region = Rect2(32, 53, 29, 36)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x25rp"]
+radius = 16.0312
+
+[node name="CharacterTokino" type="CharacterBody2D" node_paths=PackedStringArray("_Moveset", "_Hitbox")]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_1384x")
+_Moveset = NodePath("LuiMoveset")
+_Hitbox = NodePath("Hitbox")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_es64v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x25rp")
+
+[node name="Hitbox" parent="." instance=ExtResource("3_iwbaf")]
+
+[node name="LuiMoveset" parent="." instance=ExtResource("4_1384x")]

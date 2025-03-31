@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://nawe0yrtx6cd"]
+
+[ext_resource type="Script" uid="uid://cw01h4p363oi0" path="res://skills/skills_lui/birds_eye_view.gd" id="1_n5e7m"]
+[ext_resource type="PackedScene" uid="uid://cpm8hjyiscgs" path="res://projectiles/attack_spawner/attack_spawner.tscn" id="2_rgnmt"]
+
+[node name="BirdsEyeView" type="Node2D"]
+script = ExtResource("1_n5e7m")
+_SpawnerPacked = ExtResource("2_rgnmt")
+skill_name = "Birds Eye View"
+string_combo = "1"
+attack_parriable_chance = 0.2

@@ -11,7 +11,7 @@ func activate_skill() -> void:
 	var target_direction: Vector2 = self.global_position.direction_to(target_pos)
 	var parriable: bool
 	
-	var number_of_bullets = 16
+	var number_of_bullets := 16
 	
 	for i in range(number_of_bullets):
 		parriable = (CombatHelper.RNG.randf() < attack_parriable_chance)

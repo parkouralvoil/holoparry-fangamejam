@@ -18,6 +18,8 @@ var _player_combo: Array[PT.Combo] = []:
 var _rotation_speed: float = TAU * 4 # TAU is a full circle, this is 4 full rotations per sec
 var _theta: float
 
+var _parry_invulnerability: bool = false
+
 @onready var _Sprite: Sprite2D = $Sprite2D
 
 
@@ -33,6 +35,7 @@ func _ready() -> void:
 	assert(_character_resource_state)
 	EventBus.beat_window_changed.connect(_on_beat_window_changed)
 	_Moveset.assign_resource_state(_character_resource_state)
+	_Moveset.activated_parry.connect(_on_activated_parry)
 	_Hitbox.got_hit.connect(_on_hit)
 	_character_resource_state.initialize_hp()
 
@@ -111,5 +114,13 @@ func _on_beat_window_changed(active: bool) -> void:
 
 
 func _on_hit(dmg: int) -> void:
-	_character_resource_state.take_damage(dmg)
+	if not _parry_invulnerability:
+		_character_resource_state.take_damage(dmg)
 	##EventBus.player_hp_updated.emit(_hp)
+
+
+func _on_activated_parry() -> void:
+		_parry_invulnerability = true
+		await get_tree().create_timer(0.2).timeout
+		_parry_invulnerability = false
+	

@@ -1,6 +1,8 @@
 extends Node2D
 class_name BaseMoveset
 
+signal activated_parry() ## to get short iframes
+
 @export var from_enemy: bool = false
 var ui_resource_state: CharacterInfoState
 
@@ -32,6 +34,8 @@ func try_activate_skill(performed_combo: Array[PT.Combo]) -> void:
 		if skill.combo == performed_combo:
 			#print_debug("skill found: ", skill.name)
 			skill.activate_skill()
+			if skill is SkillParry:
+				activated_parry.emit()
 			return
 	print_debug("no skill found")
 

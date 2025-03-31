@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://defb1k0fgb7wd"]
+
+[ext_resource type="Script" uid="uid://c3uify2ronitc" path="res://projectiles/attack_spawner/attack_spawner_box.gd" id="1_cu662"]
+
+[node name="AttackSpawnerBox" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_cu662")

@@ -34,7 +34,8 @@ gdscript/warnings/unsafe_call_argument=1
 folder_colors={
 "res://assets/": "yellow",
 "res://globals/": "gray",
-"res://interface/": "green"
+"res://interface/": "green",
+"res://skills/": "pink"
 }
 
 [input]
