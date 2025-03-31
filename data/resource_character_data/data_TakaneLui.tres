@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ResourceCharacterData" load_steps=4 format=3 uid="uid://4audst67ehep"]
+
+[ext_resource type="PackedScene" uid="uid://bhawgw10ec3kj" path="res://characters/character_lui.tscn" id="1_ix7j3"]
+[ext_resource type="PackedScene" uid="uid://dkjy1fk4xv7dj" path="res://enemies/enemy_lui.tscn" id="2_6bbev"]
+[ext_resource type="Script" uid="uid://bogdgykiumap1" path="res://data/resource_character_data.gd" id="3_46x2t"]
+
+[resource]
+script = ExtResource("3_46x2t")
+vtuber_name = "Takane Lui"
+character_scene = ExtResource("1_ix7j3")
+enemy_scene = ExtResource("2_6bbev")
+metadata/_custom_type_script = "uid://bogdgykiumap1"

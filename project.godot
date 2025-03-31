@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 EventBus="*res://globals/EventBus.gd"
 PT="*res://globals/ProjectTypes.gd"
 CombatHelper="*res://globals/CombatHelper.gd"
+GlobalCharacterData="*res://globals/GlobalCharacterData.gd"
 
 [debug]
 
@@ -33,6 +34,7 @@ gdscript/warnings/unsafe_call_argument=1
 
 folder_colors={
 "res://assets/": "yellow",
+"res://data/": "blue",
 "res://globals/": "gray",
 "res://interface/": "green",
 "res://skills/": "pink"

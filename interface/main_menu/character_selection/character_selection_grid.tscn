@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3g7wvhlmiq2f"]
+
+[ext_resource type="Script" uid="uid://brefiet4ruan7" path="res://interface/main_menu/character_selection/character_selection_grid.gd" id="1_kukkr"]
+
+[node name="CharacterGrid" type="GridContainer"]
+columns = 4
+script = ExtResource("1_kukkr")
