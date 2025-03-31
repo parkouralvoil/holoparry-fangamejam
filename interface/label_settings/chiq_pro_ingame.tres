@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://d2m1iuv3747bn"]
+
+[ext_resource type="FontFile" uid="uid://dag7s301mbfag" path="res://assets/fonts/ChiqPro.ttf" id="1_324q8"]
+
+[resource]
+font = ExtResource("1_324q8")
+font_size = 20

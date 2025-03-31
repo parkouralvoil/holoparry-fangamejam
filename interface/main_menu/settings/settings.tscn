@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=3 uid="uid://ry6eb07xx044"]
+
+[ext_resource type="Script" uid="uid://id414iq2a0sc" path="res://interface/main_menu/settings/settings.gd" id="1_ygsll"]
+[ext_resource type="PackedScene" uid="uid://c1ybkj8rr0kw3" path="res://interface/main_menu/settings/input_button.tscn" id="2_4ud6d"]
+[ext_resource type="FontFile" uid="uid://dag7s301mbfag" path="res://assets/fonts/ChiqPro.ttf" id="2_brg15"]
+[ext_resource type="LabelSettings" uid="uid://c0dfukrfgh4x0" path="res://interface/label_settings/chiq_pro_settings.tres" id="2_ygsll"]
+
+[node name="Settings" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ygsll")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_brg15")
+theme_override_font_sizes/font_size = 25
+current_tab = 0
+
+[node name="Audio" type="MarginContainer" parent="TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+metadata/_tab_index = 0
+
+[node name="VBox" type="VBoxContainer" parent="TabContainer/Audio"]
+layout_mode = 2
+
+[node name="HBox" type="HBoxContainer" parent="TabContainer/Audio/VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Audio/VBox/HBox"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Music:"
+label_settings = ExtResource("2_ygsll")
+
+[node name="Music" type="HSlider" parent="TabContainer/Audio/VBox/HBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0
+
+[node name="HBox2" type="HBoxContainer" parent="TabContainer/Audio/VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Audio/VBox/HBox2"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Sound:"
+label_settings = ExtResource("2_ygsll")
+
+[node name="Sound" type="HSlider" parent="TabContainer/Audio/VBox/HBox2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0
+
+[node name="Controls" type="MarginContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+metadata/_tab_index = 1
+
+[node name="ActionList" type="VBoxContainer" parent="TabContainer/Controls"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="InputButton" parent="TabContainer/Controls/ActionList" instance=ExtResource("2_4ud6d")]
+layout_mode = 2
+
+[node name="InputButton2" parent="TabContainer/Controls/ActionList" instance=ExtResource("2_4ud6d")]
+layout_mode = 2

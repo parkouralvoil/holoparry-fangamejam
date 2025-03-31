@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dmvpcdpyun8lr" path="res://interface/player_interface.gd" id="1_mh0db"]
 [ext_resource type="PackedScene" uid="uid://bjj7jv27knuec" path="res://interface/player_interface_components/player_info.tscn" id="2_ngni7"]
-[ext_resource type="Resource" uid="uid://cflfyogpk7t1i" path="res://interface/player_interface_components/player_info_state.tres" id="3_puw3x"]
 [ext_resource type="PackedScene" uid="uid://bds35rjmy71sn" path="res://interface/player_interface_components/enemy_info.tscn" id="4_qundg"]
+[ext_resource type="LabelSettings" uid="uid://d2m1iuv3747bn" path="res://interface/label_settings/chiq_pro_ingame.tres" id="5_klv46"]
 
 [node name="PlayerInterface" type="Control"]
 layout_mode = 3
@@ -16,7 +16,17 @@ script = ExtResource("1_mh0db")
 
 [node name="PlayerInfo" parent="." instance=ExtResource("2_ngni7")]
 layout_mode = 1
-_resource_state = ExtResource("3_puw3x")
+anchors_preset = 2
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = -152.0
+offset_right = 264.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 0
 
 [node name="EnemyInfo" parent="." instance=ExtResource("4_qundg")]
 layout_mode = 1
@@ -41,8 +51,10 @@ offset_bottom = 40.0
 unique_name_in_owner = true
 layout_mode = 2
 text = "On-beat window: "
+label_settings = ExtResource("5_klv46")
 
 [node name="Combo" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Combo:"
+label_settings = ExtResource("5_klv46")

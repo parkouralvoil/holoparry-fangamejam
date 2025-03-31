@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjj7jv27knuec"]
+[gd_scene load_steps=7 format=3 uid="uid://bjj7jv27knuec"]
 
 [ext_resource type="Script" uid="uid://cn8gco1x8g5r1" path="res://interface/player_interface_components/character_info.gd" id="1_3oo3u"]
 [ext_resource type="Texture2D" uid="uid://bsm4p8up35xyf" path="res://icon.svg" id="1_ihxx7"]
+[ext_resource type="Resource" uid="uid://cflfyogpk7t1i" path="res://interface/player_interface_components/player_info_state.tres" id="2_15nlm"]
+[ext_resource type="LabelSettings" uid="uid://d2m1iuv3747bn" path="res://interface/label_settings/chiq_pro_ingame.tres" id="2_vex74"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3oo3u"]
 bg_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
@@ -9,57 +11,59 @@ bg_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vex74"]
 bg_color = Color(0.349697, 0.625674, 0.857558, 1)
 
-[node name="PlayerInfo" type="Control"]
-layout_mode = 3
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -168.0
-offset_right = 220.0
-grow_vertical = 0
-script = ExtResource("1_3oo3u")
-
-[node name="VBox" type="VBoxContainer" parent="."]
-layout_mode = 2
-offset_top = -1.0
-offset_right = 264.0
-offset_bottom = 167.0
+[node name="PlayerInfo" type="VBoxContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -52.0
+offset_right = 132.0
+offset_bottom = 84.0
+grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3oo3u")
+_resource_state = ExtResource("2_15nlm")
 
-[node name="LabelParry" type="Label" parent="VBox"]
+[node name="LabelParry" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
 text = "- Parry:"
+label_settings = ExtResource("2_vex74")
 
-[node name="LabelSkill1" type="Label" parent="VBox"]
+[node name="LabelSkill1" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
 text = "- Skill 1:"
+label_settings = ExtResource("2_vex74")
 
-[node name="LabelSkill2" type="Label" parent="VBox"]
+[node name="LabelSkill2" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
 text = "- Skill 2: "
+label_settings = ExtResource("2_vex74")
 
-[node name="LabelSkill3" type="Label" parent="VBox"]
+[node name="LabelSkill3" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
 text = "- Skill 3: "
+label_settings = ExtResource("2_vex74")
 
-[node name="HBox" type="HBoxContainer" parent="VBox"]
+[node name="HBox" type="HBoxContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
 
-[node name="Character" type="TextureRect" parent="VBox/HBox"]
+[node name="Character" type="TextureRect" parent="HBox"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_horizontal = 10
-size_flags_vertical = 4
+size_flags_vertical = 8
 texture = ExtResource("1_ihxx7")
 expand_mode = 3
 
-[node name="HPBar" type="ProgressBar" parent="VBox/HBox"]
+[node name="HPBar" type="ProgressBar" parent="HBox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2

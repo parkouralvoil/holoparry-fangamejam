@@ -1,0 +1,132 @@
+[gd_scene load_steps=14 format=3 uid="uid://boocc3ytyqwrv"]
+
+[ext_resource type="Script" uid="uid://ckgmthbm3m4lm" path="res://interface/main_menu/main_menu.gd" id="1_hm0ms"]
+[ext_resource type="Texture2D" uid="uid://dufr1gkplf10l" path="res://assets/interface/Title_screen_bg_holoparry_high_contrast.png" id="1_x8uof"]
+[ext_resource type="Texture2D" uid="uid://dxmetrmifpygw" path="res://assets/interface/HoloParry_Logo_transparent.png" id="2_fx8gq"]
+[ext_resource type="Texture2D" uid="uid://sptyfa02ei48" path="res://assets/interface/HoloParry_title_buttons/PlayvsAI.png" id="3_hm0ms"]
+[ext_resource type="Texture2D" uid="uid://tnusgxq18h56" path="res://assets/interface/HoloParry_title_buttons/PlayvsAI_selected.png" id="4_7piqx"]
+[ext_resource type="Texture2D" uid="uid://c145ke6q5ppc8" path="res://assets/interface/HoloParry_title_buttons/PlayTutorial.png" id="5_rkwbc"]
+[ext_resource type="Texture2D" uid="uid://dip16lmqt8w0i" path="res://assets/interface/HoloParry_title_buttons/PlayTutorial_selected.png" id="6_qt2eg"]
+[ext_resource type="Texture2D" uid="uid://bfbhdekexs1f6" path="res://assets/interface/HoloParry_title_buttons/Settings.png" id="7_db0k2"]
+[ext_resource type="Texture2D" uid="uid://dmet5ch1jofw" path="res://assets/interface/HoloParry_title_buttons/Settings_selected.png" id="8_cr5ul"]
+[ext_resource type="Texture2D" uid="uid://c44f8oeyimgg0" path="res://assets/interface/HoloParry_title_buttons/Quit.png" id="9_38238"]
+[ext_resource type="Texture2D" uid="uid://cy62oyc1hf4nc" path="res://assets/interface/HoloParry_title_buttons/Quit_selected.png" id="10_aukln"]
+[ext_resource type="PackedScene" uid="uid://ry6eb07xx044" path="res://interface/main_menu/settings/settings.tscn" id="12_rkwbc"]
+[ext_resource type="FontFile" uid="uid://dag7s301mbfag" path="res://assets/fonts/ChiqPro.ttf" id="13_rkwbc"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_hm0ms")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = -16.0
+offset_right = 21.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_x8uof")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TitleScreen" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 50
+
+[node name="VBox" type="VBoxContainer" parent="TitleScreen"]
+layout_mode = 2
+
+[node name="Title" type="TextureRect" parent="TitleScreen/VBox"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_fx8gq")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="PlayAI" type="TextureButton" parent="TitleScreen/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(350, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_hm0ms")
+texture_pressed = ExtResource("4_7piqx")
+texture_hover = ExtResource("4_7piqx")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PlayTutorial" type="TextureButton" parent="TitleScreen/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(350, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("5_rkwbc")
+texture_pressed = ExtResource("6_qt2eg")
+texture_hover = ExtResource("6_qt2eg")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Settings" type="TextureButton" parent="TitleScreen/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(175, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("7_db0k2")
+texture_pressed = ExtResource("8_cr5ul")
+texture_hover = ExtResource("8_cr5ul")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Quit" type="TextureButton" parent="TitleScreen/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("9_38238")
+texture_pressed = ExtResource("10_aukln")
+texture_hover = ExtResource("10_aukln")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="CharacterSelection" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Settings" parent="." instance=ExtResource("12_rkwbc")]
+visible = false
+layout_mode = 1
+
+[node name="ReturnButton" type="Button" parent="."]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 350.0
+offset_top = 251.0
+offset_right = 550.0
+offset_bottom = 301.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("13_rkwbc")
+theme_override_font_sizes/font_size = 30
+text = "Return"
