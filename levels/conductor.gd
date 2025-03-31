@@ -19,6 +19,8 @@ var time_off_beat: float = 0.0
 signal beat(position: int)
 signal measure(position: int)
 
+@onready var _TestMetronome: AudioStreamPlayer = $Metronome
+
 func _ready():
 	pass
 
@@ -39,6 +41,7 @@ func _report_beat():
 		current_measure += 1
 		
 		#print_debug("Beat ", song_position_in_beats, ", Measure ", str(current_measure))
+		_TestMetronome.play()
 
 func play_from_beat(beat: int, offset_beat: int):
 	play()

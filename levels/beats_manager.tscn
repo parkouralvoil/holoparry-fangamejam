@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dm8pidavkgymr"]
 
 [ext_resource type="Script" uid="uid://0a5surwvwlw5" path="res://levels/beats_manager.gd" id="1_2p1vf"]
-[ext_resource type="AudioStream" uid="uid://w23ii3g088uj" path="res://assets/sounds/metronome-85688.mp3" id="2_dcvki"]
+[ext_resource type="AudioStream" uid="uid://c6651cavvjsn8" path="res://assets/sounds/metronome-85688.wav" id="2_2bb3t"]
 [ext_resource type="PackedScene" uid="uid://cbbxeyyvdx33t" path="res://levels/Conductor.tscn" id="3_2bb3t"]
 
 [node name="BeatsManager" type="Node2D"]
@@ -13,6 +13,6 @@ script = ExtResource("1_2p1vf")
 one_shot = true
 
 [node name="TestMetronome" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_dcvki")
+stream = ExtResource("2_2bb3t")
 
 [node name="Conductor" parent="." instance=ExtResource("3_2bb3t")]

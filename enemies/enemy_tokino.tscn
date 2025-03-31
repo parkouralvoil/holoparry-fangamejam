@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://3jl7e2h37swr"]
 
-[ext_resource type="Script" uid="uid://geugbxe4mjfd" path="res://enemies/enemy_tokino.gd" id="1_s0nvv"]
+[ext_resource type="Script" uid="uid://geugbxe4mjfd" path="res://enemies/enemy.gd" id="1_s0nvv"]
 [ext_resource type="Texture2D" uid="uid://bhyr5u6cn2u2" path="res://assets/sprites/holoparry_spritesheet.png" id="2_35sme"]
 [ext_resource type="PackedScene" uid="uid://x4b7bh1iuyak" path="res://enemies/enemy_components/enemy_hitbox.tscn" id="3_s0nvv"]
 [ext_resource type="PackedScene" uid="uid://dlbp1coqi5mgi" path="res://skills/moveset_tokino.tscn" id="4_ubux1"]

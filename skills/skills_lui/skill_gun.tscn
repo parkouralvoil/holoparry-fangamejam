@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://blj7hyxvoai6a"]
+
+[ext_resource type="Script" uid="uid://b5aslrhx83dcp" path="res://skills/skills_lui/skill_gun.gd" id="1_s1pm3"]
+[ext_resource type="PackedScene" uid="uid://4dqwmqw1wq16" path="res://projectiles/projectile_star.tscn" id="2_dtihi"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_s1pm3")
+_ProjectilePacked = ExtResource("2_dtihi")
