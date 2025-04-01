@@ -47,26 +47,21 @@ func _process(delta: float) -> void:
 	_check_combo_skill_input()
 
 func _check_combo_skill_input() -> void:
-	if not _beat_input_available:
-		return
 	var current_quality := BeatVisualizer.current_beat_quality
 	if Input.is_action_just_pressed("beat_activate"):
 		EventBus.combo_or_skill_pressed.emit(current_quality)
-		_beat_input_available = false
 		if _is_action_on_beat():
 			_perform_combo()
 		else:
 			_clear_combo()
 	if Input.is_action_just_pressed("combo_up"):
 		EventBus.combo_or_skill_pressed.emit(current_quality)
-		_beat_input_available = false
 		if _is_action_on_beat():
 			_add_combo(PT.Combo.UP)
 		else:
 			_clear_combo()
 	if Input.is_action_just_pressed("combo_down"):
 		EventBus.combo_or_skill_pressed.emit(current_quality)
-		_beat_input_available = false
 		if _is_action_on_beat():
 			_add_combo(PT.Combo.DOWN)
 		else:
