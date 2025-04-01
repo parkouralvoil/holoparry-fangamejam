@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://cflfyogpk7t1i" path="res://interface/player_interface_components/player_info_state.tres" id="4_ly3hx"]
 [ext_resource type="PackedScene" uid="uid://cq6rbvv0vku06" path="res://interface/player_interface.tscn" id="4_w7r7j"]
 [ext_resource type="Resource" uid="uid://b4cpdtlev4jeg" path="res://interface/player_interface_components/enemy_info_state.tres" id="5_4n8tn"]
-[ext_resource type="PackedScene" uid="uid://bi5g78vqtaklg" path="res://interface/beat_visualiser.tscn" id="5_o6mel"]
+[ext_resource type="PackedScene" uid="uid://bi5g78vqtaklg" path="res://interface/beat_visualiser/beat_visualiser.tscn" id="5_o6mel"]
 [ext_resource type="PackedScene" uid="uid://cbbxeyyvdx33t" path="res://levels/conductor.tscn" id="9_21gvb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gmgay"]

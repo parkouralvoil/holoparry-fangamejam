@@ -10,6 +10,7 @@ class_name BeatVisualizer
 @onready var _timer_hide_quality: Timer = %TimerHideQuality
 
 var scale_hitmarker = (0.1 / Conductor.sec_per_beat) + 0.05
+var _main_tween: Tween
 
 ## beat quality stuff
 var _late_available: bool = false ## set to true after the first beat
@@ -95,6 +96,10 @@ func _combo_or_skill_pressed(beat_quality: PT.BeatQuality) -> void:
 	_label_quality.text = _get_beat_quality_string(beat_quality)
 	_label_quality.modulate = _get_beat_quality_color(beat_quality)
 	_timer_hide_quality.start()
+	if _main_tween:
+		_main_tween.stop()
+	_main_tween = create_tween()
+	_main_tween.tween_property(_main_hitMarker, "modulate", Color.WHITE, 0.35).from(Color.SKY_BLUE)
 
 
 func _on_timer_hide_quality_timeout() -> void:

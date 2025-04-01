@@ -18,6 +18,7 @@ var _rotation_speed: float = TAU * 4 # TAU is a full circle, this is 4 full rota
 var _theta: float
 
 var _parry_invulnerability: bool = false
+var _beat_input_available: bool = true
 
 @onready var _Sprite: Sprite2D = $Sprite2D
 
@@ -32,6 +33,7 @@ func _ready() -> void:
 	assert(_Moveset)
 	assert(_Hitbox)
 	assert(_character_resource_state)
+	EventBus.beat_update.connect(_on_beat_update)
 	_Moveset.assign_resource_state(_character_resource_state)
 	_Moveset.activated_parry.connect(_on_activated_parry)
 	_Hitbox.got_hit.connect(_on_hit)
@@ -45,25 +47,30 @@ func _process(delta: float) -> void:
 	_check_combo_skill_input()
 
 func _check_combo_skill_input() -> void:
+	if not _beat_input_available:
+		return
 	var current_quality := BeatVisualizer.current_beat_quality
 	if Input.is_action_just_pressed("beat_activate"):
+		EventBus.combo_or_skill_pressed.emit(current_quality)
+		_beat_input_available = false
 		if _is_action_on_beat():
 			_perform_combo()
 		else:
 			_clear_combo()
-		EventBus.combo_or_skill_pressed.emit(current_quality)
 	if Input.is_action_just_pressed("combo_up"):
+		EventBus.combo_or_skill_pressed.emit(current_quality)
+		_beat_input_available = false
 		if _is_action_on_beat():
 			_add_combo(PT.Combo.UP)
 		else:
 			_clear_combo()
-		EventBus.combo_or_skill_pressed.emit(current_quality)
 	if Input.is_action_just_pressed("combo_down"):
+		EventBus.combo_or_skill_pressed.emit(current_quality)
+		_beat_input_available = false
 		if _is_action_on_beat():
 			_add_combo(PT.Combo.DOWN)
 		else:
 			_clear_combo()
-		EventBus.combo_or_skill_pressed.emit(current_quality)
 
 
 func _perform_combo() -> void:
@@ -79,7 +86,6 @@ func _add_combo(c: PT.Combo) -> void:
 func _clear_combo() -> void:
 	_player_combo.clear()
 	EventBus.player_combo_updated.emit(_player_combo)
-
 
 func _physics_process(delta: float) -> void:
 	velocity = _move_direction.normalized() * _speed
@@ -121,4 +127,7 @@ func _on_activated_parry() -> void:
 		_parry_invulnerability = true
 		await get_tree().create_timer(0.2).timeout
 		_parry_invulnerability = false
-	
+
+
+func _on_beat_update() -> void:
+	_beat_input_available = true
