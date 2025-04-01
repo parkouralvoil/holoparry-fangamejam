@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://66sw3ckr6fy2" path="res://levels/ai_level/ai_level_round_manager.gd" id="1_1cm0i"]
 [ext_resource type="Resource" uid="uid://cflfyogpk7t1i" path="res://interface/player_interface_components/player_info_state.tres" id="4_jmvde"]
 [ext_resource type="Resource" uid="uid://b4cpdtlev4jeg" path="res://interface/player_interface_components/enemy_info_state.tres" id="5_yq3qx"]
-[ext_resource type="PackedScene" uid="uid://dm8pidavkgymr" path="res://levels/beats_manager.tscn" id="6_gt2rn"]
+[ext_resource type="PackedScene" uid="uid://cbbxeyyvdx33t" path="res://levels/conductor.tscn" id="7_3ipyh"]
 [ext_resource type="Texture2D" uid="uid://f68idayf3lv3" path="res://assets/sprites/gray_tileset_godot.png" id="7_plu7y"]
 [ext_resource type="PackedScene" uid="uid://bi5g78vqtaklg" path="res://interface/beat_visualiser.tscn" id="8_yx6a0"]
 [ext_resource type="PackedScene" uid="uid://cq6rbvv0vku06" path="res://interface/player_interface.tscn" id="9_po7hq"]
@@ -405,8 +405,6 @@ offset_right = 1159.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
 
-[node name="BeatsManager" parent="." instance=ExtResource("6_gt2rn")]
-
 [node name="StartPosCharacter" type="Marker2D" parent="."]
 position = Vector2(277, 268)
 
@@ -430,3 +428,5 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="PlayerInterface" parent="CanvasLayer" instance=ExtResource("9_po7hq")]
+
+[node name="Conductor" parent="." instance=ExtResource("7_3ipyh")]

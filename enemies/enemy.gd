@@ -36,7 +36,7 @@ func _ready() -> void:
 	assert(_Moveset)
 	assert(_Hitbox)
 	assert(_character_resource_state) ## doesnt need to pass it to tokino moveset
-	EventBus.beat_window_changed.connect(_on_beat_window_changed)
+	EventBus.beat_update.connect(_on_beat_update)
 	_Hitbox.got_hit.connect(_on_hit)
 	_MoveTimer.start(_move_timer_duration)
 	_MoveTimer.timeout.connect(_on_move_timer_timeout)
@@ -57,26 +57,25 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _on_beat_window_changed(active: bool) -> void:
-	if active:
-		if _EnemyParryBehavior.has_overlapping_areas() and _ParryTimer.is_stopped():
-			_ParryTimer.start(_parry_timer_duration)
-			_Moveset.enemy_use_skill(0)
-			_attack_counter = _attack_threshold
-			return
-		if _attack_counter >= _attack_threshold:
-			var num := CombatHelper.RNG.randf()
-			if num < 0.2:
-				_Moveset.enemy_use_skill(3)
-				_attack_counter = 1
-			elif num < 0.5:
-				_Moveset.enemy_use_skill(2)
-				_attack_counter = 2
-			else:
-				_Moveset.enemy_use_skill(1)
-				_attack_counter = 2
+func _on_beat_update() -> void:
+	if _EnemyParryBehavior.has_overlapping_areas() and _ParryTimer.is_stopped():
+		_ParryTimer.start(_parry_timer_duration)
+		_Moveset.enemy_use_skill(0)
+		_attack_counter = _attack_threshold
+		return
+	if _attack_counter >= _attack_threshold:
+		var num := CombatHelper.RNG.randf()
+		if num < 0.2:
+			_Moveset.enemy_use_skill(3)
+			_attack_counter = 1
+		elif num < 0.5:
+			_Moveset.enemy_use_skill(2)
+			_attack_counter = 2
 		else:
-			_attack_counter += 1
+			_Moveset.enemy_use_skill(1)
+			_attack_counter = 2
+	else:
+		_attack_counter += 1
 
 
 func _on_move_timer_timeout() -> void:

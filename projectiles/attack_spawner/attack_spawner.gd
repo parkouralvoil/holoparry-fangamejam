@@ -27,12 +27,10 @@ func _ready() -> void:
 		else:
 			_SpawnerSprite.modulate = Color.SKY_BLUE
 	_SpawnerBox.set_parry_remover_collisions(from_enemy)
-	EventBus.beat_window_changed.connect(_on_beat_window_changed)
+	EventBus.beat_update.connect(_on_beat_update)
 
 
-func _on_beat_window_changed(active: bool) -> void:
-	if not active:
-		return
+func _on_beat_update() -> void:
 	var t := create_tween()
 	t.tween_property(_SpawnerSprite, "scale", Vector2(0.75, 0.75), 0.1).from(Vector2(1, 1))
 	_beat_counter += 1

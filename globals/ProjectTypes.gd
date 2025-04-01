@@ -6,3 +6,10 @@ enum Combo {
 	DOWN,
 	UP,
 }
+
+enum BeatQuality {
+	MISS,
+	EARLY,
+	PERFECT,
+	LATE,
+}

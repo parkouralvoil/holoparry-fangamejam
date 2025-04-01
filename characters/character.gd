@@ -10,7 +10,6 @@ var _character_resource_state: CharacterInfoState
 var _move_direction: Vector2
 var _face_direction: Vector2 = _move_direction
 var _speed: float = 250.0
-var _beat_window_active: bool = false
 var _player_combo: Array[PT.Combo] = []:
 	set(val):
 		_player_combo = val
@@ -33,7 +32,6 @@ func _ready() -> void:
 	assert(_Moveset)
 	assert(_Hitbox)
 	assert(_character_resource_state)
-	EventBus.beat_window_changed.connect(_on_beat_window_changed)
 	_Moveset.assign_resource_state(_character_resource_state)
 	_Moveset.activated_parry.connect(_on_activated_parry)
 	_Hitbox.got_hit.connect(_on_hit)
@@ -47,21 +45,25 @@ func _process(delta: float) -> void:
 	_check_combo_skill_input()
 
 func _check_combo_skill_input() -> void:
+	var current_quality := BeatVisualizer.current_beat_quality
 	if Input.is_action_just_pressed("beat_activate"):
 		if _is_action_on_beat():
 			_perform_combo()
 		else:
 			_clear_combo()
+		EventBus.combo_or_skill_pressed.emit(current_quality)
 	if Input.is_action_just_pressed("combo_up"):
 		if _is_action_on_beat():
 			_add_combo(PT.Combo.UP)
 		else:
 			_clear_combo()
+		EventBus.combo_or_skill_pressed.emit(current_quality)
 	if Input.is_action_just_pressed("combo_down"):
 		if _is_action_on_beat():
 			_add_combo(PT.Combo.DOWN)
 		else:
 			_clear_combo()
+		EventBus.combo_or_skill_pressed.emit(current_quality)
 
 
 func _perform_combo() -> void:
@@ -90,7 +92,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _is_action_on_beat() -> bool:
-	return _beat_window_active
+	return BeatVisualizer.current_beat_quality != PT.BeatQuality.MISS
 
 
 func _check_move_input() -> void:
@@ -107,10 +109,6 @@ func _check_move_input() -> void:
 		_move_direction.x = 1
 	else:
 		_move_direction.x = 0
-
-
-func _on_beat_window_changed(active: bool) -> void:
-	_beat_window_active = active
 
 
 func _on_hit(dmg: int) -> void:
