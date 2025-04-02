@@ -15,6 +15,7 @@ static var current_beat_quality: PT.BeatQuality
 func _ready() -> void:
 	EventBus.beat_update.connect(_on_beat_update)
 	EventBus.combo_or_skill_pressed.connect(_combo_or_skill_pressed)
+	EventBus.visualiser_beat_passed.connect(_combo_or_skill_pressed)
 	_timer_hide_quality.timeout.connect(_on_timer_hide_quality_timeout)
 	_label_quality.hide()
 	
@@ -50,8 +51,10 @@ func _get_beat_quality_string(beat_quality: PT.BeatQuality) -> String:
 			return "EARLY"
 		PT.BeatQuality.LATE:
 			return "LATE"
-		_:
+		PT.BeatQuality.MISS:
 			return "MISS"
+		_:
+			return "Pass"
 
 
 func _get_beat_quality_color(beat_quality: PT.BeatQuality) -> Color:
@@ -62,8 +65,10 @@ func _get_beat_quality_color(beat_quality: PT.BeatQuality) -> Color:
 			return Color.LIGHT_SEA_GREEN
 		PT.BeatQuality.LATE:
 			return Color.LIGHT_SEA_GREEN
-		_:
+		PT.BeatQuality.MISS:
 			return Color.RED
+		_:
+			return Color.GRAY
 
 
 

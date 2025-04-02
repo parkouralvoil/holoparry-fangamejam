@@ -50,6 +50,7 @@ func _physics_process(delta: float) -> void:
 
 func _miss_reset_line() -> void:
 	reached_final_pos.emit()
+	EventBus.visualiser_beat_passed.emit(PT.BeatQuality.NONE)
 	_pressed = false
 	_moving = false
 	current_line = false
