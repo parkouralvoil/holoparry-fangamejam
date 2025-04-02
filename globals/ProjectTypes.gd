@@ -12,4 +12,5 @@ enum BeatQuality {
 	EARLY,
 	PERFECT,
 	LATE,
+	NONE, ## none is to stop too early miss
 }

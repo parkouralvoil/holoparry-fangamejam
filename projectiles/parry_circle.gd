@@ -54,7 +54,7 @@ func _on_attackParryCheckbox_area_entered(area: Area2D) -> void:
 			_tween_circle_after_parry()
 
 
-func _end_parry_check():
+func _end_parry_check() -> void:
 	_attackParryCheckbox.set_deferred("monitoring", false)
 	_sprite_during_parry.hide()
 

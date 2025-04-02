@@ -90,5 +90,5 @@ func _on_move_timer_timeout() -> void:
 		_move_direction = Vector2.LEFT
 
 
-func _on_hit(dmg: float) -> void:
+func _on_hit(dmg: int) -> void:
 	_character_resource_state.take_damage(dmg)
