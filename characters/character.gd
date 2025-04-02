@@ -48,6 +48,8 @@ func _process(delta: float) -> void:
 
 func _check_combo_skill_input() -> void:
 	var current_quality := BeatVisualizer.current_beat_quality
+	if current_quality == PT.BeatQuality.NONE:
+		return
 	if Input.is_action_just_pressed("beat_activate"):
 		EventBus.combo_or_skill_pressed.emit(current_quality)
 		if _is_action_on_beat():

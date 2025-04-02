@@ -24,19 +24,21 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	var difference: float = _diamond_visual.get_remaining_distance()
 	## PERFECT
-	if -5 <= difference and difference <= 10:
+	if -5 <= difference and difference <= 15:
 		current_beat_quality = PT.BeatQuality.PERFECT
-	elif 10 < difference and difference <= 30:
+	elif 15 < difference and difference <= 35:
 		current_beat_quality = PT.BeatQuality.EARLY
 	elif (-12 <= difference and difference < -5) and _late_available:
 		current_beat_quality = PT.BeatQuality.LATE
-	else:
+	elif 35 < difference and difference <= 70:
 		current_beat_quality = PT.BeatQuality.MISS
+	else:
+		current_beat_quality = PT.BeatQuality.NONE
 	#print(percent)
 
 
 func _reset_beat_quality() -> void:
-	current_beat_quality = PT.BeatQuality.MISS
+	current_beat_quality = PT.BeatQuality.NONE
 	_late_available = false
 
 
