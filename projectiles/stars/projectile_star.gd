@@ -1,6 +1,6 @@
 extends BaseProjectile
 
 
-func _process(delta: float) -> void:
+func _per_frame_visuals(delta: float) -> void:
 	## make the star spin!
 	_Sprite.rotation += PI * delta

@@ -1,14 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://bds35rjmy71sn"]
+[gd_scene load_steps=9 format=3 uid="uid://bds35rjmy71sn"]
 
 [ext_resource type="Script" uid="uid://cn8gco1x8g5r1" path="res://interface/player_interface_components/character_info.gd" id="1_yajgu"]
 [ext_resource type="Texture2D" uid="uid://bsm4p8up35xyf" path="res://icon.svg" id="2_6yscr"]
-[ext_resource type="Resource" uid="uid://b4cpdtlev4jeg" path="res://interface/player_interface_components/enemy_info_state.tres" id="2_tc80r"]
+[ext_resource type="Texture2D" uid="uid://dmt8kw7ga5ygr" path="res://assets/sprites/projectiles.png" id="2_tc80r"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3oo3u"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yajgu"]
 bg_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vex74"]
-bg_color = Color(0.925631, 0.36023, 0.669896, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6yscr"]
+bg_color = Color(0.947484, 0.373095, 0.520112, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tc80r"]
+bg_color = Color(0.847864, 0.503529, 0.204136, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhypy"]
+atlas = ExtResource("2_tc80r")
+region = Rect2(42, 41, 12, 11)
+
+[sub_resource type="Gradient" id="Gradient_jvkhi"]
+offsets = PackedFloat32Array(0, 0.726667, 1)
+colors = PackedColorArray(0.929412, 0.466667, 0.184314, 0.603922, 0.815686, 0.27451, 0.580392, 0.368627, 0.772549, 0.552941, 0.431373, 0.278431)
 
 [node name="EnemyInfo" type="VBoxContainer"]
 offset_top = -1.0
@@ -16,46 +27,37 @@ offset_right = 264.0
 offset_bottom = 167.0
 grow_vertical = 2
 script = ExtResource("1_yajgu")
-_resource_state = ExtResource("2_tc80r")
-
-[node name="LabelParry" type="Label" parent="."]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-text = "- Parry:"
-
-[node name="LabelSkill1" type="Label" parent="."]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-text = "- Skill 1:"
-
-[node name="LabelSkill2" type="Label" parent="."]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-text = "- Skill 2: "
-
-[node name="LabelSkill3" type="Label" parent="."]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-text = "- Skill 3: "
 
 [node name="HBox" type="HBoxContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
 
-[node name="HPBar" type="ProgressBar" parent="HBox"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBox"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="HPBar" type="ProgressBar" parent="HBox/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_styles/background = SubResource("StyleBoxFlat_yajgu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6yscr")
+step = 1.0
+value = 50.0
+
+[node name="FeverBar" type="ProgressBar" parent="HBox/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 8
-theme_override_styles/background = SubResource("StyleBoxFlat_3oo3u")
-theme_override_styles/fill = SubResource("StyleBoxFlat_vex74")
+size_flags_vertical = 6
+theme_override_styles/background = SubResource("StyleBoxFlat_yajgu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tc80r")
 step = 1.0
+value = 50.0
 
 [node name="Character" type="TextureRect" parent="HBox"]
 custom_minimum_size = Vector2(0, 60)
@@ -64,3 +66,13 @@ size_flags_horizontal = 10
 size_flags_vertical = 8
 texture = ExtResource("2_6yscr")
 expand_mode = 3
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(319, 175)
+amount = 60
+texture = SubResource("AtlasTexture_mhypy")
+direction = Vector2(-1, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 150.0
+initial_velocity_max = 250.0
+color_ramp = SubResource("Gradient_jvkhi")

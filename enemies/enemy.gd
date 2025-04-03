@@ -20,7 +20,7 @@ var _theta: float
 var _attack_counter: int = 0
 var _attack_threshold: int = 4
 
-@onready var _Sprite: Sprite2D = $Sprite2D
+@onready var _SpriteCharacter: Sprite2D = $SpriteCharacter
 @onready var _MoveTimer: Timer = $MoveTimer
 @onready var _ParryTimer: Timer = $ParryTimer
 @onready var _RNG: RandomNumberGenerator = RandomNumberGenerator.new()
@@ -35,7 +35,7 @@ func _ready() -> void:
 	# this gets called at the start of the scene
 	assert(_Moveset)
 	assert(_Hitbox)
-	assert(_character_resource_state) ## doesnt need to pass it to tokino moveset
+	_Moveset.assign_resource_state(_character_resource_state)
 	EventBus.beat_update.connect(_on_beat_update)
 	_Hitbox.got_hit.connect(_on_hit)
 	_MoveTimer.start(_move_timer_duration)
@@ -43,7 +43,7 @@ func _ready() -> void:
 	_character_resource_state.initialize_hp()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	CombatHelper.enemy_global_position = global_position
 
 
@@ -51,9 +51,9 @@ func _physics_process(delta: float) -> void:
 	velocity = _move_direction.normalized() * _speed
 	if _move_direction != Vector2.ZERO:
 		_face_direction = _move_direction
-	_theta = wrapf(atan2(_face_direction.y, _face_direction.x) - _Sprite.rotation + PI/2, 
-			-PI, PI)
-	_Sprite.rotation += clamp(_rotation_speed * delta, 0, abs(_theta)) * sign(_theta)
+	#_theta = wrapf(atan2(_face_direction.y, _face_direction.x) - _Sprite.rotation + PI/2, 
+			#-PI, PI)
+	#_Sprite.rotation += clamp(_rotation_speed * delta, 0, abs(_theta)) * sign(_theta)
 	move_and_slide()
 
 

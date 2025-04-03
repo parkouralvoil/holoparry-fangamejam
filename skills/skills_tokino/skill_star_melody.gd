@@ -2,14 +2,15 @@ extends BaseSkill
 
 @export var _ProjectilePacked: PackedScene
 
-var damage: int = 10
+var damage: int = 8
 var speed: float = 280
 
-func activate_skill() -> void:
+func activate_skill(fever_mode: bool) -> void:
 	var target_pos: Vector2
 	var parriable: bool
+	var stars := 3
 	
-	for i in range(3):
+	for i in range(stars):
 		target_pos = CombatHelper.enemy_global_position if not _from_enemy \
 			else CombatHelper.player_global_position
 		parriable = false
@@ -17,6 +18,17 @@ func activate_skill() -> void:
 			parriable = true
 		_shoot(_ProjectilePacked, 
 				self.global_position.direction_to(target_pos), 
+				self.global_position,
+				_from_enemy,
+				parriable)
+		if fever_mode:
+			_shoot(_ProjectilePacked, 
+				self.global_position.direction_to(target_pos).rotated(PI/10), 
+				self.global_position,
+				_from_enemy,
+				parriable)
+			_shoot(_ProjectilePacked, 
+				self.global_position.direction_to(target_pos).rotated(-PI/10), 
 				self.global_position,
 				_from_enemy,
 				parriable)

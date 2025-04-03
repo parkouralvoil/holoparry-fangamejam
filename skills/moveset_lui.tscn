@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dx4lho5v6e6r4" path="res://skills/skill_parry.tscn" id="2_1jgh2"]
 [ext_resource type="PackedScene" uid="uid://blj7hyxvoai6a" path="res://skills/skills_lui/skill_gun.tscn" id="3_k23cg"]
 [ext_resource type="PackedScene" uid="uid://bya4yrm7spdg" path="res://projectiles/projectile_bullet.tscn" id="4_al6w7"]
-[ext_resource type="PackedScene" uid="uid://c3mlpt00vp3n7" path="res://skills/skills_lui/skill_gun_ring.tscn" id="6_4ymd0"]
+[ext_resource type="PackedScene" uid="uid://c3mlpt00vp3n7" path="res://skills/skills_lui/skill_feather_storm.tscn" id="6_4ymd0"]
 [ext_resource type="PackedScene" uid="uid://nawe0yrtx6cd" path="res://skills/skills_lui/birds_eye_view.tscn" id="6_k23cg"]
 
 [node name="LuiMoveset" type="Node2D"]
@@ -17,15 +17,17 @@ string_combo = "0"
 [node name="Gun" parent="." instance=ExtResource("3_k23cg")]
 visible = false
 _ProjectilePacked = ExtResource("4_al6w7")
-skill_name = "Gun"
-string_combo = "011"
+skill_name = "Feather Shot"
+string_combo = "01"
 attack_parriable_chance = 0.2
 
-[node name="GunRing" parent="." instance=ExtResource("6_4ymd0")]
+[node name="BirdsEyeView" parent="." instance=ExtResource("6_k23cg")]
+visible = false
+string_combo = "011"
+
+[node name="FeatherStorm" parent="." instance=ExtResource("6_4ymd0")]
 visible = false
 _ProjectilePacked = ExtResource("4_al6w7")
-skill_name = "Gun RIng"
+skill_name = "Feather Storm"
 string_combo = "0110"
-attack_parriable_chance = 0.3
-
-[node name="BirdsEyeView" parent="." instance=ExtResource("6_k23cg")]
+attack_parriable_chance = 0.1

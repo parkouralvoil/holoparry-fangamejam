@@ -34,7 +34,7 @@ func set_parry_check(from_enemy: bool) -> void: ## called by SkillParry
 	_parry_from_enemy = from_enemy
 
 
-func activate_parry_check(): ## called by SkillParry
+func activate_parry_check() -> void: ## called by SkillParry
 	_attackParryCheckbox.monitoring = true
 	_sprite_during_parry.show()
 	_activeDurationTimer.start(_active_duration)

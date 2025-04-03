@@ -31,7 +31,7 @@ func _process(_delta: float) -> void:
 		current_beat_quality = PT.BeatQuality.EARLY
 	elif (-12 <= difference and difference < -5) and _late_available:
 		current_beat_quality = PT.BeatQuality.LATE
-	elif 35 < difference and difference <= 70:
+	elif (35 < difference and difference <= 70) or difference < -12:
 		current_beat_quality = PT.BeatQuality.MISS
 	else:
 		current_beat_quality = PT.BeatQuality.NONE

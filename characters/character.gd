@@ -20,7 +20,8 @@ var _theta: float
 var _parry_invulnerability: bool = false
 var _beat_input_available: bool = true
 
-@onready var _Sprite: Sprite2D = $Sprite2D
+@onready var _SpriteCharacter: Sprite2D = $SpriteCharacter
+@onready var _SpriteHitbox: Sprite2D = $SpriteCharacter
 
 
 func initialize_resource_state(state: CharacterInfoState) -> void:
@@ -40,7 +41,7 @@ func _ready() -> void:
 	_character_resource_state.initialize_hp()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# this gets called every frame
 	CombatHelper.player_global_position = global_position
 	_check_move_input()
@@ -52,18 +53,21 @@ func _check_combo_skill_input() -> void:
 		return
 	if Input.is_action_just_pressed("beat_activate"):
 		EventBus.combo_or_skill_pressed.emit(current_quality)
+		_increase_fever_by_beat_quality(current_quality)
 		if _is_action_on_beat():
 			_perform_combo()
 		else:
 			_clear_combo()
 	if Input.is_action_just_pressed("combo_up"):
 		EventBus.combo_or_skill_pressed.emit(current_quality)
+		_increase_fever_by_beat_quality(current_quality)
 		if _is_action_on_beat():
 			_add_combo(PT.Combo.UP)
 		else:
 			_clear_combo()
 	if Input.is_action_just_pressed("combo_down"):
 		EventBus.combo_or_skill_pressed.emit(current_quality)
+		_increase_fever_by_beat_quality(current_quality)
 		if _is_action_on_beat():
 			_add_combo(PT.Combo.DOWN)
 		else:
@@ -76,7 +80,11 @@ func _perform_combo() -> void:
 
 
 func _add_combo(c: PT.Combo) -> void:
-	_player_combo.append(c)
+	if _player_combo.size() < 4:
+		_player_combo.append(c)
+	else: ## player combo is now maxed at 4
+		_player_combo.push_front(c)
+		_player_combo.pop_back()
 	EventBus.player_combo_updated.emit(_player_combo)
 
 
@@ -84,13 +92,26 @@ func _clear_combo() -> void:
 	_player_combo.clear()
 	EventBus.player_combo_updated.emit(_player_combo)
 
+
+func _increase_fever_by_beat_quality(beat_quality: PT.BeatQuality) -> void:
+	match beat_quality:
+		PT.BeatQuality.PERFECT:
+			_Moveset.increase_fever(2)
+		PT.BeatQuality.EARLY:
+			_Moveset.increase_fever(1)
+		PT.BeatQuality.LATE:
+			_Moveset.increase_fever(1)
+		_:
+			pass
+
+
 func _physics_process(delta: float) -> void:
 	velocity = _move_direction.normalized() * _speed
 	if _move_direction != Vector2.ZERO:
 		_face_direction = _move_direction
-	_theta = wrapf(atan2(_face_direction.y, _face_direction.x) - _Sprite.rotation + PI/2, 
-			-PI, PI)
-	_Sprite.rotation += clamp(_rotation_speed * delta, 0, abs(_theta)) * sign(_theta)
+	#_theta = wrapf(atan2(_face_direction.y, _face_direction.x) - _Sprite.rotation + PI/2, 
+			#-PI, PI)
+	#_Sprite.rotation += clamp(_rotation_speed * delta, 0, abs(_theta)) * sign(_theta)
 	move_and_slide()
 
 

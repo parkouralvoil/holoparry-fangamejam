@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 		song_position_in_beats = int(floor(song_position / sec_per_beat)) + beat_before_start
 		_report_beat()
 		
-func _report_beat():
+func _report_beat() -> void:
 	if last_reported_beat < song_position_in_beats:
 		if current_measure >= measures:
 			current_measure = 0
@@ -42,7 +42,7 @@ func _report_beat():
 		
 		_Metronome.play()
 
-func play_from_beat(starting_beat: int, offset_beat: int):
+func play_from_beat(starting_beat: int, offset_beat: int) -> void:
 	play()
 	seek(starting_beat * sec_per_beat)
 	beat_before_start = offset_beat

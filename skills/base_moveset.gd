@@ -10,12 +10,11 @@ var _skill_array: Array[BaseSkill]
 
 func assign_resource_state(resouce: CharacterInfoState) -> void:
 	ui_resource_state = resouce ## called by Character/Enemy that owns this
-	if ui_resource_state:
-		await get_tree().process_frame ## HACK: give time for player_interface to load its resources
-		ui_resource_state.combo_parry = _skill_array[0].string_combo
-		ui_resource_state.combo_skill_1 = _skill_array[1].string_combo
-		ui_resource_state.combo_skill_2 = _skill_array[2].string_combo
-		ui_resource_state.combo_skill_3 = _skill_array[3].string_combo
+	var dict: Dictionary[String, String] = {}
+	for s in _skill_array:
+		dict[s.string_combo] = s.skill_name
+	ui_resource_state.set_skill_info(dict.duplicate())
+
 
 func _ready() -> void:
 	for node in get_children():
@@ -24,8 +23,19 @@ func _ready() -> void:
 			node.show()
 			if from_enemy:
 				node.attack_parriable_chance = clampf(node.attack_parriable_chance * 2, 0, 1)
+			if node is SkillParry:
+				var p: SkillParry = node
+				p.parry_fever_increase.connect(increase_fever.bind(30))
 			#print_debug(node.name, node.combo, from_enemy)
 			_skill_array.append(node)
+
+
+func _process(delta: float) -> void:
+	if not ui_resource_state:
+		return
+	if ui_resource_state.fever_active:
+		ui_resource_state.fever -= 10.0 * delta
+
 
 
 func try_activate_skill(performed_combo: Array[PT.Combo]) -> void:
@@ -33,14 +43,25 @@ func try_activate_skill(performed_combo: Array[PT.Combo]) -> void:
 	for skill in _skill_array:
 		if skill.combo == performed_combo:
 			#print_debug("skill found: ", skill.name)
-			skill.activate_skill()
+			skill.activate_skill(ui_resource_state.fever_active)
+			increase_fever(performed_combo.size())
 			if skill is SkillParry:
 				activated_parry.emit()
 			return
 	print_debug("no skill found")
 
 
+func increase_fever(amt: float) -> void:
+	if not ui_resource_state.fever_active:
+		ui_resource_state.fever += amt
+
+
 func enemy_use_skill(index: int) -> void:
 	## for enemies to easily cast a skill
+	var fever_mode := false
+	if ui_resource_state: 
+		fever_mode = ui_resource_state.fever_active
+		print_debug(fever_mode)
 	if _skill_array.size() > index:
-		_skill_array[index].activate_skill()
+		increase_fever(index * 2)
+		_skill_array[index].activate_skill(fever_mode)

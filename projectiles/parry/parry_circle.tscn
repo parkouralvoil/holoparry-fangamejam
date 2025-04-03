@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://d344ibvqccpwh"]
 
-[ext_resource type="Script" uid="uid://bjcx0qjmo7lai" path="res://projectiles/parry_circle.gd" id="1_ag15n"]
+[ext_resource type="Script" uid="uid://bjcx0qjmo7lai" path="res://projectiles/parry/parry_circle.gd" id="1_ag15n"]
 [ext_resource type="Texture2D" uid="uid://bhyr5u6cn2u2" path="res://assets/sprites/holoparry_spritesheet.png" id="2_j2bcp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qqe28"]
@@ -8,7 +8,7 @@ atlas = ExtResource("2_j2bcp")
 region = Rect2(37, 121, 31, 31)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fwgqv"]
-radius = 43.0
+radius = 64.0078
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ag15n"]
 atlas = ExtResource("2_j2bcp")
@@ -18,10 +18,12 @@ region = Rect2(37, 121, 31, 31)
 script = ExtResource("1_ag15n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2.5, 2.5)
+position = Vector2(0, -23)
+scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_qqe28")
 
 [node name="AttackParryCheckbox" type="Area2D" parent="."]
+position = Vector2(0, -22)
 collision_layer = 0
 collision_mask = 0
 monitoring = false
@@ -36,5 +38,5 @@ one_shot = true
 [node name="SpriteAfterParry" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(0.40629, 0.565822, 0.999998, 0.356863)
-scale = Vector2(2.5, 2.5)
+scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_ag15n")

@@ -1,30 +1,40 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhawgw10ec3kj"]
+[gd_scene load_steps=8 format=3 uid="uid://bhawgw10ec3kj"]
 
 [ext_resource type="Script" uid="uid://o2t23wdgwtgl" path="res://characters/character.gd" id="1_1384x"]
-[ext_resource type="Texture2D" uid="uid://bhyr5u6cn2u2" path="res://assets/sprites/holoparry_spritesheet.png" id="2_e4nd2"]
+[ext_resource type="Texture2D" uid="uid://mkdvq683ua45" path="res://assets/sprites/character_lui/lui_normal.png" id="2_1384x"]
+[ext_resource type="Texture2D" uid="uid://bhyr5u6cn2u2" path="res://assets/sprites/holoparry_spritesheet.png" id="3_e4nd2"]
 [ext_resource type="PackedScene" uid="uid://c667wgyiuyaog" path="res://characters/character_components/character_hitbox.tscn" id="3_iwbaf"]
 [ext_resource type="PackedScene" uid="uid://cd8l644ska776" path="res://skills/moveset_lui.tscn" id="4_1384x"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_es64v"]
-atlas = ExtResource("2_e4nd2")
-region = Rect2(32, 53, 29, 36)
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwbaf"]
+atlas = ExtResource("3_e4nd2")
+region = Rect2(29, 273, 31, 31)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x25rp"]
-radius = 16.0312
+radius = 43.0116
 
-[node name="CharacterTokino" type="CharacterBody2D" node_paths=PackedStringArray("_Moveset", "_Hitbox")]
+[node name="CharacterLui" type="CharacterBody2D" node_paths=PackedStringArray("_Moveset", "_Hitbox")]
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("1_1384x")
 _Moveset = NodePath("LuiMoveset")
 _Hitbox = NodePath("Hitbox")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("AtlasTexture_es64v")
+[node name="SpriteCharacter" type="Sprite2D" parent="."]
+modulate = Color(0.764706, 0.764706, 0.764706, 0.956863)
+position = Vector2(0, -18)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_1384x")
+
+[node name="SpriteHitbox" type="Sprite2D" parent="."]
+modulate = Color(0.132, 0.665, 1.5, 1)
+scale = Vector2(0.7, 0.7)
+texture = SubResource("AtlasTexture_iwbaf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12)
 shape = SubResource("CircleShape2D_x25rp")
 
-[node name="Hitbox" parent="." instance=ExtResource("3_iwbaf")]
-
 [node name="LuiMoveset" parent="." instance=ExtResource("4_1384x")]
+
+[node name="Hitbox" parent="." instance=ExtResource("3_iwbaf")]
