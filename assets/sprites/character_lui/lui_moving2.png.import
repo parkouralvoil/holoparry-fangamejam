@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxfqkq8s2yhd1"
-path="res://.godot/imported/sora_normal.png-020c1039adae28bcc620a106431e69d4.ctex"
+uid="uid://xaj0cvxst4vx"
+path="res://.godot/imported/lui_moving2.png-fd11efea91d9243ad6f49d43b2e041b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/character_sora/sora_normal.png"
-dest_files=["res://.godot/imported/sora_normal.png-020c1039adae28bcc620a106431e69d4.ctex"]
+source_file="res://assets/sprites/character_lui/lui_moving2.png"
+dest_files=["res://.godot/imported/lui_moving2.png-fd11efea91d9243ad6f49d43b2e041b9.ctex"]
 
 [params]
 

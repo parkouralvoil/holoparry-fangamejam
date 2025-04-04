@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkjy1fk4xv7dj"]
+[gd_scene load_steps=13 format=3 uid="uid://dkjy1fk4xv7dj"]
 
 [ext_resource type="Script" uid="uid://geugbxe4mjfd" path="res://enemies/enemy.gd" id="1_ybhht"]
 [ext_resource type="AudioStream" uid="uid://3y21kgkt52tn" path="res://assets/sounds/lui/Lui_Scream.mp3" id="2_5gryf"]
@@ -7,7 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://dd3r4qkoka32b" path="res://assets/sounds/lui/lui_parry2.mp3" id="3_5gryf"]
 [ext_resource type="PackedScene" uid="uid://x4b7bh1iuyak" path="res://enemies/enemy_components/enemy_hitbox.tscn" id="3_wjfph"]
 [ext_resource type="PackedScene" uid="uid://dh2u76ljnta6y" path="res://enemies/enemy_components/enemy_parry_behavior.tscn" id="4_5gryf"]
+[ext_resource type="Texture2D" uid="uid://xaj0cvxst4vx" path="res://assets/sprites/character_lui/lui_moving2.png" id="5_7lpm2"]
 [ext_resource type="PackedScene" uid="uid://cd8l644ska776" path="res://skills/moveset_lui.tscn" id="5_ybhht"]
+[ext_resource type="Texture2D" uid="uid://buhxgqbhmpi5n" path="res://assets/sprites/character_lui/lui_hurt_with_effect.png" id="6_csyr8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5gryf"]
 atlas = ExtResource("2_u4q3x")
@@ -27,6 +29,9 @@ _move_timer_duration = 0.5
 _parry_timer_duration = 7.0
 _audio_death_scream = ExtResource("2_5gryf")
 _audio_parry = ExtResource("3_5gryf")
+_texture_idle = ExtResource("2_wjfph")
+_texture_move = ExtResource("5_7lpm2")
+_texture_hurt = ExtResource("6_csyr8")
 
 [node name="SpriteCharacter" type="Sprite2D" parent="."]
 modulate = Color(0.80035, 0.706599, 1, 0.956863)
@@ -55,4 +60,7 @@ from_enemy = true
 wait_time = 3.0
 
 [node name="ParryTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HurtDuration" type="Timer" parent="."]
 one_shot = true

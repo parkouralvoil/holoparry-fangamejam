@@ -1,12 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://cpp2y5j2rhpsx"]
+[gd_scene load_steps=12 format=3 uid="uid://cpp2y5j2rhpsx"]
 
 [ext_resource type="Script" uid="uid://o2t23wdgwtgl" path="res://characters/character.gd" id="1_b1u1o"]
 [ext_resource type="AudioStream" uid="uid://dl87r0yvxceqy" path="res://assets/sounds/sora/sora_scream.mp3" id="2_akqow"]
 [ext_resource type="Texture2D" uid="uid://bhyr5u6cn2u2" path="res://assets/sprites/holoparry_spritesheet.png" id="2_mxkve"]
 [ext_resource type="AudioStream" uid="uid://bh1ywyipgnik7" path="res://assets/sounds/sora/sora_parry_thanks.mp3" id="3_27i81"]
 [ext_resource type="PackedScene" uid="uid://c667wgyiuyaog" path="res://characters/character_components/character_hitbox.tscn" id="3_ke030"]
-[ext_resource type="Texture2D" uid="uid://bxfqkq8s2yhd1" path="res://assets/sprites/character_sora/sora_normal.png" id="4_es64v"]
+[ext_resource type="Texture2D" uid="uid://bmx7bl6yi2ib4" path="res://assets/sprites/character_sora/sora_idle.png" id="4_akqow"]
 [ext_resource type="PackedScene" uid="uid://dlbp1coqi5mgi" path="res://skills/moveset_tokino.tscn" id="4_mxkve"]
+[ext_resource type="Texture2D" uid="uid://dj242ehjudow7" path="res://assets/sprites/character_sora/sora_moving.png" id="5_7aob0"]
+[ext_resource type="Texture2D" uid="uid://blamx6asbsyh2" path="res://assets/sprites/character_sora/sora_hurt_idle.png" id="6_ltmh1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y6x7c"]
 atlas = ExtResource("2_mxkve")
@@ -23,12 +25,15 @@ _Moveset = NodePath("TokinoMoveset")
 _Hitbox = NodePath("Hitbox")
 _audio_death_scream = ExtResource("2_akqow")
 _audio_parry = ExtResource("3_27i81")
+_texture_idle = ExtResource("4_akqow")
+_texture_move = ExtResource("5_7aob0")
+_texture_hurt = ExtResource("6_ltmh1")
 
 [node name="SpriteCharacter" type="Sprite2D" parent="."]
-modulate = Color(0.737255, 0.737255, 0.737255, 0.792157)
+modulate = Color(0.858824, 0.858824, 0.858824, 1)
 position = Vector2(0, -18)
-scale = Vector2(0.18, 0.18)
-texture = ExtResource("4_es64v")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_akqow")
 
 [node name="SpriteHitbox" type="Sprite2D" parent="."]
 modulate = Color(0, 0.768033, 0.75703, 0.980392)
@@ -42,3 +47,6 @@ shape = SubResource("CircleShape2D_es64v")
 [node name="Hitbox" parent="." instance=ExtResource("3_ke030")]
 
 [node name="TokinoMoveset" parent="." instance=ExtResource("4_mxkve")]
+
+[node name="HurtDuration" type="Timer" parent="."]
+one_shot = true

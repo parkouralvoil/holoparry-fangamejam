@@ -17,18 +17,18 @@ enum BeatQuality {
 
 
 func array_combo_to_string(arr: Array[Combo]) -> String:
-	var str := ""
+	var string := ""
 	for c in arr:
 		if c == Combo.DOWN:
-			str += "0"
+			string += "0"
 		else:
-			str += "1"
-	return str
+			string += "1"
+	return string
 
 
-func string_to_array_combo(str: String) -> Array[Combo]:
+func string_to_array_combo(string: String) -> Array[Combo]:
 	var arr: Array[Combo] = []
-	for c in str:
+	for c in string:
 		if c == "0":
 			arr.append(Combo.DOWN)
 		else :

@@ -1,12 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://3jl7e2h37swr"]
+[gd_scene load_steps=13 format=3 uid="uid://3jl7e2h37swr"]
 
 [ext_resource type="Script" uid="uid://geugbxe4mjfd" path="res://enemies/enemy.gd" id="1_s0nvv"]
 [ext_resource type="Texture2D" uid="uid://bhyr5u6cn2u2" path="res://assets/sprites/holoparry_spritesheet.png" id="2_35sme"]
 [ext_resource type="AudioStream" uid="uid://dl87r0yvxceqy" path="res://assets/sounds/sora/sora_scream.mp3" id="2_83anj"]
-[ext_resource type="Texture2D" uid="uid://bxfqkq8s2yhd1" path="res://assets/sprites/character_sora/sora_normal.png" id="2_fwmlk"]
 [ext_resource type="AudioStream" uid="uid://dd4g77vqdghwr" path="res://assets/sounds/sora/sora_parry_angry.mp3" id="3_e8is3"]
 [ext_resource type="PackedScene" uid="uid://x4b7bh1iuyak" path="res://enemies/enemy_components/enemy_hitbox.tscn" id="3_s0nvv"]
+[ext_resource type="Texture2D" uid="uid://blamx6asbsyh2" path="res://assets/sprites/character_sora/sora_hurt_idle.png" id="4_0x6rh"]
+[ext_resource type="Texture2D" uid="uid://bmx7bl6yi2ib4" path="res://assets/sprites/character_sora/sora_idle.png" id="4_83anj"]
 [ext_resource type="PackedScene" uid="uid://dlbp1coqi5mgi" path="res://skills/moveset_tokino.tscn" id="4_ubux1"]
+[ext_resource type="Texture2D" uid="uid://dj242ehjudow7" path="res://assets/sprites/character_sora/sora_moving.png" id="5_1vnje"]
 [ext_resource type="PackedScene" uid="uid://dh2u76ljnta6y" path="res://enemies/enemy_components/enemy_parry_behavior.tscn" id="5_35sme"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fwmlk"]
@@ -27,12 +29,15 @@ _move_timer_duration = 0.5
 _parry_timer_duration = 7.0
 _audio_death_scream = ExtResource("2_83anj")
 _audio_parry = ExtResource("3_e8is3")
+_texture_idle = ExtResource("4_0x6rh")
+_texture_move = ExtResource("5_1vnje")
+_texture_hurt = ExtResource("4_0x6rh")
 
 [node name="SpriteCharacter" type="Sprite2D" parent="."]
-modulate = Color(0.737255, 0.737255, 0.737255, 0.792157)
+modulate = Color(0.760784, 0.619608, 0.878431, 1)
 position = Vector2(0, -18)
-scale = Vector2(0.18, 0.18)
-texture = ExtResource("2_fwmlk")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_83anj")
 
 [node name="SpriteHitbox" type="Sprite2D" parent="."]
 modulate = Color(1, 0.549472, 0.479339, 1)
@@ -55,4 +60,7 @@ from_enemy = true
 wait_time = 3.0
 
 [node name="ParryTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HurtDuration" type="Timer" parent="."]
 one_shot = true

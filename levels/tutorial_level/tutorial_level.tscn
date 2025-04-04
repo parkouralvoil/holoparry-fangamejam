@@ -1,18 +1,20 @@
-[gd_scene load_steps=13 format=4 uid="uid://bltic84cf8wyn"]
+[gd_scene load_steps=16 format=4 uid="uid://3wj2i4xhkog8"]
 
-[ext_resource type="Script" uid="uid://66sw3ckr6fy2" path="res://levels/ai_level/ai_level_round_manager.gd" id="1_1cm0i"]
-[ext_resource type="Resource" uid="uid://cflfyogpk7t1i" path="res://interface/player_interface_components/player_info_state.tres" id="4_jmvde"]
-[ext_resource type="PackedScene" uid="uid://8ld6k3brsdij" path="res://levels/background_ui/round_ui.tscn" id="4_v0f2t"]
-[ext_resource type="Resource" uid="uid://b4cpdtlev4jeg" path="res://interface/player_interface_components/enemy_info_state.tres" id="5_yq3qx"]
-[ext_resource type="PackedScene" uid="uid://cbbxeyyvdx33t" path="res://levels/conductor.tscn" id="7_3ipyh"]
-[ext_resource type="Texture2D" uid="uid://f68idayf3lv3" path="res://assets/sprites/gray_tileset_godot.png" id="7_plu7y"]
-[ext_resource type="Texture2D" uid="uid://dufr1gkplf10l" path="res://assets/interface/Title_screen_bg_holoparry_high_contrast.png" id="7_v0f2t"]
-[ext_resource type="PackedScene" uid="uid://bi5g78vqtaklg" path="res://interface/beat_visualiser/beat_visualiser.tscn" id="8_yx6a0"]
-[ext_resource type="PackedScene" uid="uid://b0b2ws6rkqbh1" path="res://levels/freeze_frame/freeze_frame.tscn" id="9_oul0k"]
-[ext_resource type="PackedScene" uid="uid://cq6rbvv0vku06" path="res://interface/player_interface.tscn" id="9_po7hq"]
+[ext_resource type="Script" uid="uid://dsfekgqndy27b" path="res://levels/tutorial_level/tutorial_level_round_manager.gd" id="1_cxq8o"]
+[ext_resource type="Resource" uid="uid://cflfyogpk7t1i" path="res://interface/player_interface_components/player_info_state.tres" id="2_41eun"]
+[ext_resource type="Resource" uid="uid://dcu2dwmfmj7qh" path="res://data/resource_character_data/data_TokinoSora.tres" id="3_rrqyi"]
+[ext_resource type="Texture2D" uid="uid://dufr1gkplf10l" path="res://assets/interface/Title_screen_bg_holoparry_high_contrast.png" id="4_wa5np"]
+[ext_resource type="Texture2D" uid="uid://f68idayf3lv3" path="res://assets/sprites/gray_tileset_godot.png" id="5_iuc1h"]
+[ext_resource type="PackedScene" uid="uid://8ld6k3brsdij" path="res://levels/background_ui/round_ui.tscn" id="6_xwlwm"]
+[ext_resource type="PackedScene" uid="uid://bi5g78vqtaklg" path="res://interface/beat_visualiser/beat_visualiser.tscn" id="7_ajdfg"]
+[ext_resource type="PackedScene" uid="uid://cq6rbvv0vku06" path="res://interface/player_interface.tscn" id="8_dvfa3"]
+[ext_resource type="PackedScene" uid="uid://bbrddesge5tpd" path="res://levels/tutorial_level/shadow_sora.tscn" id="9_7c7i4"]
+[ext_resource type="PackedScene" uid="uid://cbbxeyyvdx33t" path="res://levels/conductor.tscn" id="9_qn44m"]
+[ext_resource type="FontFile" uid="uid://dag7s301mbfag" path="res://assets/fonts/ChiqPro.ttf" id="10_axelv"]
+[ext_resource type="PackedScene" uid="uid://b0b2ws6rkqbh1" path="res://levels/freeze_frame/freeze_frame.tscn" id="10_gg70j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n5kxc"]
-texture = ExtResource("7_plu7y")
+texture = ExtResource("5_iuc1h")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0
@@ -398,10 +400,13 @@ terrain_set_0/terrain_0/name = "arena"
 terrain_set_0/terrain_0/color = Color(0.471263, 0.310731, 0.531781, 1)
 sources/0 = SubResource("TileSetAtlasSource_n5kxc")
 
-[node name="AI_level" type="Node2D"]
-script = ExtResource("1_1cm0i")
-_tracked_state_player = ExtResource("4_jmvde")
-_tracked_state_enemy = ExtResource("5_yq3qx")
+[sub_resource type="LabelSettings" id="LabelSettings_7c7i4"]
+font = ExtResource("10_axelv")
+
+[node name="TutorialLevel" type="Node2D"]
+script = ExtResource("1_cxq8o")
+_tracked_state_player = ExtResource("2_41eun")
+_tutorial_player_resource_data = ExtResource("3_rrqyi")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 10
@@ -412,7 +417,7 @@ grow_horizontal = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Background" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.359)
+modulate = Color(1, 1, 1, 0.658824)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -422,7 +427,7 @@ offset_right = 1265.0
 offset_bottom = 939.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_v0f2t")
+texture = ExtResource("4_wa5np")
 expand_mode = 2
 stretch_mode = 4
 
@@ -431,17 +436,14 @@ tile_map_data = PackedByteArray("AAD//ygAAAAJAAMAAAD//ycAAAAJAAIAAAD//yYAAAAJAAI
 tile_set = SubResource("TileSet_6u2jf")
 
 [node name="StartPosCharacter" type="Marker2D" parent="."]
-position = Vector2(277, 268)
-
-[node name="StartPosEnemy" type="Marker2D" parent="."]
-position = Vector2(881, 259)
+position = Vector2(577, 318)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="RoundUI" parent="CanvasLayer" instance=ExtResource("4_v0f2t")]
+[node name="RoundUI" parent="CanvasLayer" instance=ExtResource("6_xwlwm")]
 unique_name_in_owner = true
 
-[node name="BeatVisualiser" parent="CanvasLayer" instance=ExtResource("8_yx6a0")]
+[node name="BeatVisualiser" parent="CanvasLayer" instance=ExtResource("7_ajdfg")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -452,9 +454,40 @@ grow_horizontal = 1
 grow_vertical = 1
 mouse_filter = 2
 
-[node name="PlayerInterface" parent="CanvasLayer" instance=ExtResource("9_po7hq")]
+[node name="PlayerInterface" parent="CanvasLayer" instance=ExtResource("8_dvfa3")]
+unique_name_in_owner = true
 mouse_filter = 2
 
-[node name="Conductor" parent="." instance=ExtResource("7_3ipyh")]
+[node name="Conductor" parent="." instance=ExtResource("9_qn44m")]
 
-[node name="FreezeFrame" parent="." instance=ExtResource("9_oul0k")]
+[node name="FreezeFrame" parent="." instance=ExtResource("10_gg70j")]
+
+[node name="ShadowSora" parent="." instance=ExtResource("9_7c7i4")]
+position = Vector2(1022.13, 105.951)
+scale = Vector2(0.274259, 0.274259)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_left = 20.0
+offset_top = 58.0
+offset_right = 383.0
+offset_bottom = 343.0
+
+[node name="Guide1" type="Label" parent="PanelContainer"]
+custom_minimum_size = Vector2(350, 150)
+layout_mode = 2
+text = "Movement: WASD
+
+Combo: Press UP or DOWN on the beat.
+
+Attack: Press SPACE to unleash the combo skill.
+
+- Missing your input will reset the combo!
+
+Parry: Only yellow projectiles can be parried.
+
+Fever: After attacking enough times, fever mode will activate and make your attacks stronger.
+
+
+Once you're ready, touch the shadow on the corner."
+label_settings = SubResource("LabelSettings_7c7i4")
+autowrap_mode = 3

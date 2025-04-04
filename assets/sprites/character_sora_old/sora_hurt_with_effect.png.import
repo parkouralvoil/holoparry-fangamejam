@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://djcis77o5k07b"
-path="res://.godot/imported/sora_hurt_with_effect.png-b186df5c9c4cf83a2c29f6bfb9be4702.ctex"
+path="res://.godot/imported/sora_hurt_with_effect.png-adcd7d4bb5089becff6ce154c205e515.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/character_sora/sora_hurt_with_effect.png"
-dest_files=["res://.godot/imported/sora_hurt_with_effect.png-b186df5c9c4cf83a2c29f6bfb9be4702.ctex"]
+source_file="res://assets/sprites/character_sora_old/sora_hurt_with_effect.png"
+dest_files=["res://.godot/imported/sora_hurt_with_effect.png-adcd7d4bb5089becff6ce154c205e515.ctex"]
 
 [params]
 

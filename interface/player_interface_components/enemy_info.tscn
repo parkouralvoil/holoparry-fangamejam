@@ -72,6 +72,7 @@ expand_mode = 3
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(319, 175)
+emitting = false
 amount = 60
 texture = SubResource("AtlasTexture_mhypy")
 direction = Vector2(-1, -1)

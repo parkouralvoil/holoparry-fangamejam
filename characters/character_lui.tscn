@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bhawgw10ec3kj"]
+[gd_scene load_steps=12 format=3 uid="uid://bhawgw10ec3kj"]
 
 [ext_resource type="Script" uid="uid://o2t23wdgwtgl" path="res://characters/character.gd" id="1_1384x"]
 [ext_resource type="Texture2D" uid="uid://mkdvq683ua45" path="res://assets/sprites/character_lui/lui_normal.png" id="2_1384x"]
@@ -7,6 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://p5o5i41klfyx" path="res://assets/sounds/lui/lui_parry1.mp3" id="3_gxris"]
 [ext_resource type="PackedScene" uid="uid://c667wgyiuyaog" path="res://characters/character_components/character_hitbox.tscn" id="3_iwbaf"]
 [ext_resource type="PackedScene" uid="uid://cd8l644ska776" path="res://skills/moveset_lui.tscn" id="4_1384x"]
+[ext_resource type="Texture2D" uid="uid://xaj0cvxst4vx" path="res://assets/sprites/character_lui/lui_moving2.png" id="5_6bjar"]
+[ext_resource type="Texture2D" uid="uid://buhxgqbhmpi5n" path="res://assets/sprites/character_lui/lui_hurt_with_effect.png" id="6_5kpe5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iwbaf"]
 atlas = ExtResource("3_e4nd2")
@@ -23,6 +25,9 @@ _Moveset = NodePath("LuiMoveset")
 _Hitbox = NodePath("Hitbox")
 _audio_death_scream = ExtResource("2_bupkp")
 _audio_parry = ExtResource("3_gxris")
+_texture_idle = ExtResource("2_1384x")
+_texture_move = ExtResource("5_6bjar")
+_texture_hurt = ExtResource("6_5kpe5")
 
 [node name="SpriteCharacter" type="Sprite2D" parent="."]
 modulate = Color(0.764706, 0.764706, 0.764706, 0.956863)
@@ -40,6 +45,8 @@ position = Vector2(0, -12)
 shape = SubResource("CircleShape2D_x25rp")
 
 [node name="LuiMoveset" parent="." instance=ExtResource("4_1384x")]
-from_enemy = false
 
 [node name="Hitbox" parent="." instance=ExtResource("3_iwbaf")]
+
+[node name="HurtDuration" type="Timer" parent="."]
+one_shot = true

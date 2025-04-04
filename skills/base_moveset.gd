@@ -54,7 +54,8 @@ func try_activate_skill(performed_combo: Array[PT.Combo]) -> void:
 
 func _on_successful_parry_skill() -> void:
 	increase_fever(30)
-	SoundPlayer.play_sound(audio_parry, 1)
+	if CombatHelper.RNG.randf() < 0.5:
+		SoundPlayer.play_sound(audio_parry, 0)
 
 
 func increase_fever(amt: float) -> void:

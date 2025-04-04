@@ -9,9 +9,14 @@ var _enemy_resource_data: ResourceCharacterData
 
 var _player: BaseCharacter
 var _enemy: BaseEnemy
+var _freeze_frame_duration: float
+var _game_finished: bool = false
 
 @onready var _start_pos_player: Marker2D = $StartPosCharacter
 @onready var _start_pos_enemy: Marker2D = $StartPosEnemy
+@onready var _t_freeze_frame: FreezeFrame = $FreezeFrame
+
+@onready var _round_ui: RoundUI = %RoundUI
 
 
 func _ready() -> void:
@@ -21,6 +26,7 @@ func _ready() -> void:
 	_tracked_state_enemy.died.connect(_on_enemy_died)
 	_player_resource_data = GlobalCharacterData.get_character_player()
 	_enemy_resource_data = GlobalCharacterData.get_character_AI()
+	_round_ui.return_pressed.connect(_on_return_pressed)
 	
 	begin_game(_player_resource_data.character_scene, _enemy_resource_data.enemy_scene)
 	
@@ -40,14 +46,28 @@ func begin_game(player_packed: PackedScene, enemy_packed: PackedScene) -> void:
 
 
 func _on_player_died() -> void:
-	_player.queue_free()
+	if _game_finished:
+		return
+	_game_finished = true
+	_player.defeated()
+	await get_tree().physics_frame
+	_t_freeze_frame.freeze_frame(_freeze_frame_duration)
 	_game_ended("AI " + _enemy_resource_data.vtuber_name)
 
 
 func _on_enemy_died() -> void:
-	_enemy.queue_free()
+	if _game_finished:
+		return
+	_game_finished = true
+	_enemy.defeated()
+	await get_tree().physics_frame
+	_t_freeze_frame.freeze_frame(_freeze_frame_duration)
 	_game_ended("Player " + _player_resource_data.vtuber_name)
 
 
 func _game_ended(winner_name: String) -> void:
-	print_debug(winner_name + " wins!")
+	_round_ui.show_winner(winner_name)
+
+
+func _on_return_pressed() -> void:
+	SceneLoader.goto_main_menu()

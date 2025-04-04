@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgn5mcegn4fno"
-path="res://.godot/imported/sora_no_face.png-20985e4652130f2a45d6943aac31b0d0.ctex"
+uid="uid://bxfqkq8s2yhd1"
+path="res://.godot/imported/sora_normal.png-305bb94c217f3b439191cd9f1b8db03d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/character_sora/sora_no_face.png"
-dest_files=["res://.godot/imported/sora_no_face.png-20985e4652130f2a45d6943aac31b0d0.ctex"]
+source_file="res://assets/sprites/character_sora_old/sora_normal.png"
+dest_files=["res://.godot/imported/sora_normal.png-305bb94c217f3b439191cd9f1b8db03d.ctex"]
 
 [params]
 

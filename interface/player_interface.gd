@@ -10,6 +10,8 @@ var _player_moveset_skill_info: Dictionary[String, String] = {}
 @onready var _SkillComboInfos: HBoxContainer = %SkillComboInfos 
 @onready var _ComboHBox: HBoxContainer = %ComboHBox
 @onready var _AvailableSkill: Label = %AvailableSkill
+
+@onready var _enemy_info: CharacterInfoUI = $EnemyInfo
 #@onready var _HPBar: ProgressBar = $HBoxContainer/VBoxContainer/HPBar
 
 func _ready() -> void:
@@ -44,8 +46,13 @@ func _on_player_combo_updated(new_combo: Array[PT.Combo]) -> void:
 
 func _on_skill_info_changed() -> void:
 	_player_moveset_skill_info = _player_info_state.skill_info
+	var keys: Array[String] = _player_moveset_skill_info.keys()
 	var i := 0
-	for key in _player_moveset_skill_info.keys():
+	for key in keys:
 		var val := _player_moveset_skill_info[key]
 		_skill_combo_info_boxes[i].set_info(key, val)
 		i += 1
+
+
+func set_tutorial_level_ui() -> void:
+	_enemy_info.hide()
