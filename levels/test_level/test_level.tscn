@@ -1,15 +1,16 @@
-[gd_scene load_steps=13 format=4 uid="uid://yhpjuq7wt8y8"]
+[gd_scene load_steps=14 format=4 uid="uid://yhpjuq7wt8y8"]
 
 [ext_resource type="Script" uid="uid://cj6sw8voktjjv" path="res://levels/test_level/test_level_round_manager.gd" id="1_ur00s"]
-[ext_resource type="PackedScene" uid="uid://bhawgw10ec3kj" path="res://characters/character_lui.tscn" id="2_21gvb"]
+[ext_resource type="PackedScene" uid="uid://cpp2y5j2rhpsx" path="res://characters/character_tokino.tscn" id="2_v7owi"]
 [ext_resource type="Texture2D" uid="uid://f68idayf3lv3" path="res://assets/sprites/gray_tileset_godot.png" id="2_x25rp"]
-[ext_resource type="PackedScene" uid="uid://3jl7e2h37swr" path="res://enemies/enemy_tokino.tscn" id="3_tn4ko"]
+[ext_resource type="PackedScene" uid="uid://3jl7e2h37swr" path="res://enemies/enemy_tokino.tscn" id="3_81dj1"]
 [ext_resource type="Resource" uid="uid://cflfyogpk7t1i" path="res://interface/player_interface_components/player_info_state.tres" id="4_ly3hx"]
 [ext_resource type="PackedScene" uid="uid://cq6rbvv0vku06" path="res://interface/player_interface.tscn" id="4_w7r7j"]
 [ext_resource type="Resource" uid="uid://b4cpdtlev4jeg" path="res://interface/player_interface_components/enemy_info_state.tres" id="5_4n8tn"]
 [ext_resource type="PackedScene" uid="uid://bi5g78vqtaklg" path="res://interface/beat_visualiser/beat_visualiser.tscn" id="5_o6mel"]
 [ext_resource type="Texture2D" uid="uid://dufr1gkplf10l" path="res://assets/interface/Title_screen_bg_holoparry_high_contrast.png" id="6_tn4ko"]
 [ext_resource type="PackedScene" uid="uid://cbbxeyyvdx33t" path="res://levels/conductor.tscn" id="9_21gvb"]
+[ext_resource type="PackedScene" uid="uid://b0b2ws6rkqbh1" path="res://levels/freeze_frame/freeze_frame.tscn" id="11_v7owi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_21gvb"]
 texture = ExtResource("2_x25rp")
@@ -400,8 +401,8 @@ sources/0 = SubResource("TileSetAtlasSource_21gvb")
 
 [node name="TestLevel" type="Node2D"]
 script = ExtResource("1_ur00s")
-_selected_player = ExtResource("2_21gvb")
-_selected_enemy = ExtResource("3_tn4ko")
+_selected_player = ExtResource("2_v7owi")
+_selected_enemy = ExtResource("3_81dj1")
 _tracked_state_player = ExtResource("4_ly3hx")
 _tracked_state_enemy = ExtResource("5_4n8tn")
 
@@ -450,3 +451,5 @@ grow_vertical = 1
 [node name="PlayerInterface" parent="CanvasLayer" instance=ExtResource("4_w7r7j")]
 
 [node name="Conductor" parent="." instance=ExtResource("9_21gvb")]
+
+[node name="FreezeFrame" parent="." instance=ExtResource("11_v7owi")]

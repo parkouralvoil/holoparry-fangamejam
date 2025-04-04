@@ -57,9 +57,9 @@ anchor_top = 1.0
 anchor_right = 0.0
 anchor_bottom = 1.0
 offset_left = 0.0
-offset_top = -152.0
-offset_right = 264.0
-offset_bottom = 0.0
+offset_top = -166.0
+offset_right = 314.0
+offset_bottom = -14.0
 grow_horizontal = 1
 grow_vertical = 0
 _character_info_state = ExtResource("2_grsaq")
@@ -71,19 +71,19 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -267.0
-offset_top = -168.0
+offset_left = -314.0
+offset_top = -182.0
 offset_right = 0.0
-offset_bottom = 0.0
+offset_bottom = -14.0
 grow_horizontal = 0
 grow_vertical = 0
 _character_info_state = ExtResource("6_8dhqx")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_top = 511.0
+offset_top = 497.0
 offset_right = 304.0
-offset_bottom = 573.0
+offset_bottom = 559.0
 
 [node name="ComboHBox" type="HBoxContainer" parent="VBoxContainer"]
 unique_name_in_owner = true

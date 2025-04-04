@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://3jl7e2h37swr"]
+[gd_scene load_steps=11 format=3 uid="uid://3jl7e2h37swr"]
 
 [ext_resource type="Script" uid="uid://geugbxe4mjfd" path="res://enemies/enemy.gd" id="1_s0nvv"]
 [ext_resource type="Texture2D" uid="uid://bhyr5u6cn2u2" path="res://assets/sprites/holoparry_spritesheet.png" id="2_35sme"]
+[ext_resource type="AudioStream" uid="uid://dl87r0yvxceqy" path="res://assets/sounds/sora/sora_scream.mp3" id="2_83anj"]
 [ext_resource type="Texture2D" uid="uid://bxfqkq8s2yhd1" path="res://assets/sprites/character_sora/sora_normal.png" id="2_fwmlk"]
+[ext_resource type="AudioStream" uid="uid://dd4g77vqdghwr" path="res://assets/sounds/sora/sora_parry_angry.mp3" id="3_e8is3"]
 [ext_resource type="PackedScene" uid="uid://x4b7bh1iuyak" path="res://enemies/enemy_components/enemy_hitbox.tscn" id="3_s0nvv"]
 [ext_resource type="PackedScene" uid="uid://dlbp1coqi5mgi" path="res://skills/moveset_tokino.tscn" id="4_ubux1"]
 [ext_resource type="PackedScene" uid="uid://dh2u76ljnta6y" path="res://enemies/enemy_components/enemy_parry_behavior.tscn" id="5_35sme"]
@@ -23,6 +25,8 @@ _Hitbox = NodePath("EnemyHitbox")
 _EnemyParryBehavior = NodePath("EnemyParryBehavior")
 _move_timer_duration = 0.5
 _parry_timer_duration = 7.0
+_audio_death_scream = ExtResource("2_83anj")
+_audio_parry = ExtResource("3_e8is3")
 
 [node name="SpriteCharacter" type="Sprite2D" parent="."]
 modulate = Color(0.737255, 0.737255, 0.737255, 0.792157)

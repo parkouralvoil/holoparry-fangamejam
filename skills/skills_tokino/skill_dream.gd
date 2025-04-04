@@ -11,33 +11,39 @@ func activate_skill(fever_mode: bool) -> void:
 	var target_direction: Vector2
 	var parriable_chance: float = 0.2
 	
-	
-	var star_rings := 1 if not fever_mode else 2
-	
-	for i in range(star_rings):
-		target_direction = self.global_position.direction_to(target_pos)
+	target_direction = self.global_position.direction_to(target_pos)
+	_shoot_ring(_ProjectilePacked, 
+			target_direction, 
+			self.global_position,
+			_from_enemy,
+			parriable_chance,
+			6,
+			90)
+	if fever_mode:
 		_shoot_ring(_ProjectilePacked, 
 				target_direction, 
 				self.global_position,
 				_from_enemy,
-				parriable_chance)
-		if i < star_rings - 1:
-			await get_tree().create_timer(0.35).timeout
+				parriable_chance,
+				8,
+				160)
 
 
 func _shoot_ring(projectile_packed: PackedScene, 
 		dir: Vector2, 
 		origin: Vector2,
 		from_enemy: bool,
-		parryable_chance: float) -> void:
+		parryable_chance: float,
+		num_of_stars: int,
+		starting_distance: float) -> void:
 	var p: ProjectileOrbitingStars = projectile_packed.instantiate()
 	p.direction = dir
 	p.global_position = origin
 	p.from_enemy = from_enemy
 	p.damage = damage
 	p.speed = speed
-	p.num_of_stars = 7
-	p.starting_distance = 110
+	p.num_of_stars = num_of_stars
+	p.starting_distance = starting_distance
 	p.parryable_chance = parryable_chance
 	p.top_level = true
 	add_child(p)

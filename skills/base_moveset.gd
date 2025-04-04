@@ -5,6 +5,7 @@ signal activated_parry() ## to get short iframes
 
 @export var from_enemy: bool = false
 var ui_resource_state: CharacterInfoState
+var audio_parry: AudioStream
 
 var _skill_array: Array[BaseSkill]
 
@@ -25,7 +26,7 @@ func _ready() -> void:
 				node.attack_parriable_chance = clampf(node.attack_parriable_chance * 2, 0, 1)
 			if node is SkillParry:
 				var p: SkillParry = node
-				p.parry_fever_increase.connect(increase_fever.bind(30))
+				p.successful_parry_skill.connect(_on_successful_parry_skill)
 			#print_debug(node.name, node.combo, from_enemy)
 			_skill_array.append(node)
 
@@ -51,6 +52,11 @@ func try_activate_skill(performed_combo: Array[PT.Combo]) -> void:
 	print_debug("no skill found")
 
 
+func _on_successful_parry_skill() -> void:
+	increase_fever(30)
+	SoundPlayer.play_sound(audio_parry, 1)
+
+
 func increase_fever(amt: float) -> void:
 	if not ui_resource_state.fever_active:
 		ui_resource_state.fever += amt
@@ -61,7 +67,6 @@ func enemy_use_skill(index: int) -> void:
 	var fever_mode := false
 	if ui_resource_state: 
 		fever_mode = ui_resource_state.fever_active
-		print_debug(fever_mode)
 	if _skill_array.size() > index:
 		increase_fever(index * 2)
 		_skill_array[index].activate_skill(fever_mode)

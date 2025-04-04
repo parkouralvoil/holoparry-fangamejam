@@ -38,5 +38,6 @@ one_shot = true
 [node name="SpriteAfterParry" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(0.40629, 0.565822, 0.999998, 0.356863)
+position = Vector2(0, -23)
 scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_ag15n")

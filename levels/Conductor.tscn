@@ -6,6 +6,7 @@
 
 [node name="Conductor" type="AudioStreamPlayer"]
 stream = ExtResource("1_bd4pa")
+bus = &"Music"
 script = ExtResource("2_ia6vu")
 
 [node name="StartTimer" type="Timer" parent="."]

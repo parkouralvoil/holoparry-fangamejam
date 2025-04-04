@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpp2y5j2rhpsx"]
+[gd_scene load_steps=10 format=3 uid="uid://cpp2y5j2rhpsx"]
 
 [ext_resource type="Script" uid="uid://o2t23wdgwtgl" path="res://characters/character.gd" id="1_b1u1o"]
+[ext_resource type="AudioStream" uid="uid://dl87r0yvxceqy" path="res://assets/sounds/sora/sora_scream.mp3" id="2_akqow"]
 [ext_resource type="Texture2D" uid="uid://bhyr5u6cn2u2" path="res://assets/sprites/holoparry_spritesheet.png" id="2_mxkve"]
+[ext_resource type="AudioStream" uid="uid://bh1ywyipgnik7" path="res://assets/sounds/sora/sora_parry_thanks.mp3" id="3_27i81"]
 [ext_resource type="PackedScene" uid="uid://c667wgyiuyaog" path="res://characters/character_components/character_hitbox.tscn" id="3_ke030"]
 [ext_resource type="Texture2D" uid="uid://bxfqkq8s2yhd1" path="res://assets/sprites/character_sora/sora_normal.png" id="4_es64v"]
 [ext_resource type="PackedScene" uid="uid://dlbp1coqi5mgi" path="res://skills/moveset_tokino.tscn" id="4_mxkve"]
@@ -19,6 +21,8 @@ collision_mask = 16
 script = ExtResource("1_b1u1o")
 _Moveset = NodePath("TokinoMoveset")
 _Hitbox = NodePath("Hitbox")
+_audio_death_scream = ExtResource("2_akqow")
+_audio_parry = ExtResource("3_27i81")
 
 [node name="SpriteCharacter" type="Sprite2D" parent="."]
 modulate = Color(0.737255, 0.737255, 0.737255, 0.792157)

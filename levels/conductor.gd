@@ -40,7 +40,7 @@ func _report_beat() -> void:
 		last_reported_beat = song_position_in_beats
 		current_measure += 1
 		
-		_Metronome.play()
+		#_Metronome.play()
 
 func play_from_beat(starting_beat: int, offset_beat: int) -> void:
 	play()

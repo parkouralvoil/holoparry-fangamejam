@@ -1,7 +1,7 @@
 extends BaseSkill
 class_name SkillParry
 
-signal parry_fever_increase()
+signal successful_parry_skill()
 
 @onready var _ParryCircle: ParryCircle = $ParryCircle
 @onready var _ParryAttackRemover: ParryAttackRemover = $ParryAttackRemover
@@ -24,7 +24,7 @@ func activate_skill(_fever_mode: bool) -> void:
 
 
 func _on_successful_parry() -> void:
-	parry_fever_increase.emit()
+	successful_parry_skill.emit()
 	_ParryAttackRemover.prepare_attack_remover(self.global_position)
 	await get_tree().physics_frame ## this is important to give enough time
 	await get_tree().physics_frame ## for the area2D to get all the overlapping projectiles

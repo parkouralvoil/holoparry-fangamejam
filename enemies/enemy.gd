@@ -1,6 +1,10 @@
 extends CharacterBody2D
 class_name BaseEnemy
 
+var _DefeatedPackedScene: PackedScene = preload(
+		"res://characters/defeated_character/defeated_character.tscn"
+	)
+
 ## Base character class for AI vtubers
 
 @export var _Moveset: BaseMoveset
@@ -8,6 +12,10 @@ class_name BaseEnemy
 @export var _EnemyParryBehavior: Area2D
 @export var _move_timer_duration: float
 @export var _parry_timer_duration: float
+
+@export_category("Character Specific")
+@export var _audio_death_scream: AudioStream
+@export var _audio_parry: AudioStream
 
 var _character_resource_state: CharacterInfoState
 
@@ -36,6 +44,7 @@ func _ready() -> void:
 	assert(_Moveset)
 	assert(_Hitbox)
 	_Moveset.assign_resource_state(_character_resource_state)
+	_Moveset.audio_parry = _audio_parry
 	EventBus.beat_update.connect(_on_beat_update)
 	_Hitbox.got_hit.connect(_on_hit)
 	_MoveTimer.start(_move_timer_duration)
@@ -92,3 +101,14 @@ func _on_move_timer_timeout() -> void:
 
 func _on_hit(dmg: int) -> void:
 	_character_resource_state.take_damage(dmg)
+
+
+func defeated() -> void:
+	var defeated_sprite: DefeatedCharacter = _DefeatedPackedScene.instantiate()
+	defeated_sprite.global_position = global_position
+	defeated_sprite.texture = _SpriteCharacter.texture
+	defeated_sprite.sprite_scale = _SpriteCharacter.scale
+	SoundPlayer.play_sound(_audio_death_scream)
+	add_sibling(defeated_sprite)
+	await get_tree().process_frame
+	queue_free()

@@ -39,7 +39,7 @@ size_flags_vertical = 8
 
 [node name="HPBar" type="ProgressBar" parent="HBox/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 0)
+custom_minimum_size = Vector2(200, 25)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
@@ -47,6 +47,8 @@ theme_override_styles/background = SubResource("StyleBoxFlat_yajgu")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6yscr")
 step = 1.0
 value = 50.0
+fill_mode = 1
+show_percentage = false
 
 [node name="FeverBar" type="ProgressBar" parent="HBox/VBoxContainer"]
 unique_name_in_owner = true
@@ -58,6 +60,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_yajgu")
 theme_override_styles/fill = SubResource("StyleBoxFlat_tc80r")
 step = 1.0
 value = 50.0
+fill_mode = 1
 
 [node name="Character" type="TextureRect" parent="HBox"]
 custom_minimum_size = Vector2(0, 60)
