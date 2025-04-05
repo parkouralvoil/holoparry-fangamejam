@@ -1,11 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://ry6eb07xx044"]
+[gd_scene load_steps=7 format=3 uid="uid://ry6eb07xx044"]
 
-[ext_resource type="Script" uid="uid://id414iq2a0sc" path="res://interface/main_menu/settings/settings.gd" id="1_ygsll"]
+[ext_resource type="Script" uid="uid://id414iq2a0sc" path="res://interface/main_menu/settings/settings_menu.gd" id="1_ygsll"]
 [ext_resource type="PackedScene" uid="uid://c1ybkj8rr0kw3" path="res://interface/main_menu/settings/input_button.tscn" id="2_4ud6d"]
 [ext_resource type="FontFile" uid="uid://dag7s301mbfag" path="res://assets/fonts/ChiqPro.ttf" id="2_brg15"]
 [ext_resource type="LabelSettings" uid="uid://c0dfukrfgh4x0" path="res://interface/label_settings/chiq_pro_settings.tres" id="2_ygsll"]
 
-[node name="Settings" type="CenterContainer"]
+[sub_resource type="InputEventKey" id="InputEventKey_x6wae"]
+device = -1
+keycode = 4194322
+
+[sub_resource type="InputEventKey" id="InputEventKey_m2k76"]
+device = -1
+keycode = 4194320
+
+[node name="SettingsMenu" type="CenterContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -18,9 +26,10 @@ custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_brg15")
 theme_override_font_sizes/font_size = 25
-current_tab = 0
+current_tab = 1
 
 [node name="Audio" type="MarginContainer" parent="TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -64,7 +73,6 @@ size_flags_vertical = 4
 value = 100.0
 
 [node name="Controls" type="MarginContainer" parent="TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -76,8 +84,32 @@ metadata/_tab_index = 1
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="InputButton" parent="TabContainer/Controls/ActionList" instance=ExtResource("2_4ud6d")]
+[node name="Beat0" parent="TabContainer/Controls/ActionList" instance=ExtResource("2_4ud6d")]
+unique_name_in_owner = true
 layout_mode = 2
+_input_event = SubResource("InputEventKey_x6wae")
+_input_control = "beat_0"
 
-[node name="InputButton2" parent="TabContainer/Controls/ActionList" instance=ExtResource("2_4ud6d")]
+[node name="Action" parent="TabContainer/Controls/ActionList/Beat0/HBox" index="0"]
+text = "Beat 0"
+
+[node name="Label" parent="TabContainer/Controls/ActionList/Beat0/HBox" index="2"]
+text = "Down"
+
+[node name="Beat1" parent="TabContainer/Controls/ActionList" instance=ExtResource("2_4ud6d")]
+unique_name_in_owner = true
 layout_mode = 2
+_input_event = SubResource("InputEventKey_m2k76")
+_input_control = "beat_1"
+
+[node name="Action" parent="TabContainer/Controls/ActionList/Beat1/HBox" index="0"]
+text = "Beat 1"
+
+[node name="Label" parent="TabContainer/Controls/ActionList/Beat1/HBox" index="2"]
+text = "Up"
+
+[connection signal="value_changed" from="TabContainer/Audio/VBox/HBox/Music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/VBox/HBox2/Sound" to="." method="_on_sound_value_changed"]
+
+[editable path="TabContainer/Controls/ActionList/Beat0"]
+[editable path="TabContainer/Controls/ActionList/Beat1"]
