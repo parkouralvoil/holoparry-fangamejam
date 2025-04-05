@@ -1,9 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1ybkj8rr0kw3"]
+[gd_scene load_steps=3 format=3 uid="uid://c1ybkj8rr0kw3"]
 
 [ext_resource type="LabelSettings" uid="uid://d2m1iuv3747bn" path="res://interface/label_settings/chiq_pro_ingame.tres" id="1_2rt8v"]
+[ext_resource type="Script" uid="uid://bpefp5pqxi8fg" path="res://interface/main_menu/settings/input_button.gd" id="1_jmf3a"]
 
 [node name="InputButton" type="Button"]
 custom_minimum_size = Vector2(0, 40)
+offset_right = 8.0
+offset_bottom = 40.0
+focus_mode = 0
+toggle_mode = true
+script = ExtResource("1_jmf3a")
 
 [node name="HBox" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -15,7 +21,7 @@ grow_vertical = 2
 
 [node name="Action" type="Label" parent="HBox"]
 layout_mode = 2
-text = "Beat UP"
+text = "Action"
 label_settings = ExtResource("1_2rt8v")
 
 [node name="Control" type="Control" parent="HBox"]
@@ -23,6 +29,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="HBox"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Control"
+text = "Label"
 label_settings = ExtResource("1_2rt8v")
+
+[connection signal="toggled" from="." to="." method="_on_toggled"]
