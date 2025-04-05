@@ -10,7 +10,7 @@ class_name MainMenu
 ## Menus
 @onready var _title_screen := $TitleScreen
 @onready var _character_selection_screen := $CharacterSelection
-@onready var _settings_screen := $Settings
+@onready var _settings_screen := $SettingsMenu
 
 func _ready() -> void:
 	_button_play_ai.pressed.connect(_on_button_play_ai_pressed)
