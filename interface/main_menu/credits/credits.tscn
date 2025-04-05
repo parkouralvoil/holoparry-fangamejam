@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://dku6fs23oumqg"]
+
+[ext_resource type="LabelSettings" uid="uid://c0dfukrfgh4x0" path="res://interface/label_settings/chiq_pro_settings.tres" id="2_8nwx8"]
+
+[node name="Credits" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="cred" type="Label" parent="VBox"]
+layout_mode = 2
+text = "CREDITS"
+label_settings = ExtResource("2_8nwx8")
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="VBox/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="credits" type="Label" parent="VBox/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "Music: 
+1. https://www.youtube.com/watch?v=iAt5_n4e0IU
+2. https://www.youtube.com/watch?v=8SNVOJvvrso
+
+Voice lines:
+Sora:
+1. https://www.youtube.com/watch?v=MhfFzINR_Bk
+2. https://www.youtube.com/watch?v=L0wV92r0D2c
+3. https://www.youtube.com/watch?v=J83mXyPp08s
+
+Lui:
+1. https://www.youtube.com/watch?v=OYc_V_3nE5A
+2. https://www.youtube.com/watch?v=3_gogh1UxMQ"
+label_settings = ExtResource("2_8nwx8")

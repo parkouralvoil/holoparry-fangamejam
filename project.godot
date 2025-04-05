@@ -14,7 +14,7 @@ config/name="HoloParry FanGameJam"
 run/main_scene="uid://boocc3ytyqwrv"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 run/max_fps=120
-config/icon="res://icon.svg"
+config/icon="uid://dcdjulb1ukhrc"
 
 [audio]
 

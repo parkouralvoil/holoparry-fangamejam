@@ -13,3 +13,4 @@ script = ExtResource("2_ia6vu")
 
 [node name="Metronome" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_us147")
+bus = &"Sound"

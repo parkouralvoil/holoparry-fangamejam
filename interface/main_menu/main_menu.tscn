@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://boocc3ytyqwrv"]
+[gd_scene load_steps=19 format=3 uid="uid://boocc3ytyqwrv"]
 
 [ext_resource type="Script" uid="uid://ckgmthbm3m4lm" path="res://interface/main_menu/main_menu.gd" id="1_hm0ms"]
 [ext_resource type="Texture2D" uid="uid://dufr1gkplf10l" path="res://assets/interface/Title_screen_bg_holoparry_high_contrast.png" id="1_x8uof"]
@@ -11,9 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://dmet5ch1jofw" path="res://assets/interface/HoloParry_title_buttons/Settings_selected.png" id="8_cr5ul"]
 [ext_resource type="Texture2D" uid="uid://c44f8oeyimgg0" path="res://assets/interface/HoloParry_title_buttons/Quit.png" id="9_38238"]
 [ext_resource type="Texture2D" uid="uid://cy62oyc1hf4nc" path="res://assets/interface/HoloParry_title_buttons/Quit_selected.png" id="10_aukln"]
+[ext_resource type="Texture2D" uid="uid://c40r3iidj066y" path="res://assets/interface/HoloParry_title_buttons/Credits.png" id="10_iefpf"]
+[ext_resource type="Texture2D" uid="uid://bdmehi2ti13rw" path="res://assets/interface/HoloParry_title_buttons/Credits_selected.png" id="11_16e0j"]
 [ext_resource type="PackedScene" uid="uid://coety5pch1axv" path="res://interface/main_menu/character_selection/character_selection.tscn" id="12_qt2eg"]
 [ext_resource type="PackedScene" uid="uid://ry6eb07xx044" path="res://interface/main_menu/settings/settings_menu.tscn" id="12_rkwbc"]
+[ext_resource type="PackedScene" uid="uid://dku6fs23oumqg" path="res://interface/main_menu/credits/credits.tscn" id="13_db0k2"]
 [ext_resource type="FontFile" uid="uid://dag7s301mbfag" path="res://assets/fonts/ChiqPro.ttf" id="13_rkwbc"]
+[ext_resource type="AudioStream" uid="uid://51ayx7oaud83" path="res://assets/sounds/Step and Go!! by Tokino Sora  ときのそら (InstrumentalKaraokeカラオケ器楽).mp3" id="16_cr5ul"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -93,6 +97,17 @@ texture_hover = ExtResource("8_cr5ul")
 ignore_texture_size = true
 stretch_mode = 5
 
+[node name="Credits" type="TextureButton" parent="TitleScreen/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("10_iefpf")
+texture_pressed = ExtResource("11_16e0j")
+texture_hover = ExtResource("8_cr5ul")
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="Quit" type="TextureButton" parent="TitleScreen/VBox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 75)
@@ -105,13 +120,24 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="CharacterSelection" parent="." instance=ExtResource("12_qt2eg")]
+visible = false
 layout_mode = 1
+
+[node name="Credits" parent="." instance=ExtResource("13_db0k2")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="SettingsMenu" parent="." instance=ExtResource("12_rkwbc")]
 visible = false
 layout_mode = 1
 
 [node name="ReturnButton" type="Button" parent="."]
+visible = false
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 1
 anchors_preset = 8
@@ -128,3 +154,8 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("13_rkwbc")
 theme_override_font_sizes/font_size = 30
 text = "Return"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_cr5ul")
+autoplay = true
+bus = &"Music"

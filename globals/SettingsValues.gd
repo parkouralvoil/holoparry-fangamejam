@@ -8,8 +8,8 @@ var volume: Dictionary[String, float] =  {
 	'Music': 60
 }
 
-@onready var _bus_music_index: int = AudioServer.get_bus_index('Sound')
-@onready var _bus_sound_index: int = AudioServer.get_bus_index('Music')
+@onready var _bus_music_index: int = AudioServer.get_bus_index('Music')
+@onready var _bus_sound_index: int = AudioServer.get_bus_index('Sound')
 
 func _update_volumes() -> void:
 	AudioServer.set_bus_volume_linear(
