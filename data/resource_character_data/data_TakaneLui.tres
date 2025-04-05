@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bhawgw10ec3kj" path="res://characters/character_lui.tscn" id="1_ix7j3"]
 [ext_resource type="PackedScene" uid="uid://dkjy1fk4xv7dj" path="res://enemies/enemy_lui.tscn" id="2_6bbev"]
-[ext_resource type="Texture2D" uid="uid://bsm4p8up35xyf" path="res://icon.svg" id="3_6bbev"]
+[ext_resource type="Texture2D" uid="uid://bqtsor8a5h7kj" path="res://assets/portraits/LUI COLORED.png" id="3_6bbev"]
 [ext_resource type="Script" uid="uid://bogdgykiumap1" path="res://data/resource_character_data.gd" id="3_46x2t"]
 
 [resource]
