@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://tgcc1t28jwlu"]
+
+[ext_resource type="Script" uid="uid://injxexy87bxh" path="res://projectiles/stars/projectile_orbiting_stars.gd" id="1_ttkf7"]
+[ext_resource type="PackedScene" uid="uid://b46r3coymwvrh" path="res://projectiles/projectile_hurtbox.tscn" id="2_ttkf7"]
+[ext_resource type="PackedScene" uid="uid://cw1tm4m5ub2ht" path="res://projectiles/stars/part_orbiting_star.tscn" id="3_7g5p0"]
+
+[node name="ProjectileOrbitingStars" type="Node2D" node_paths=PackedStringArray("_Hurtbox", "_Sprite")]
+position = Vector2(322, 427)
+script = ExtResource("1_ttkf7")
+_PartOrbitingStarPacked = ExtResource("3_7g5p0")
+_Hurtbox = NodePath("ProjectileHurtbox")
+_Sprite = NodePath("Sprite2D")
+
+[node name="ProjectileHurtbox" parent="." instance=ExtResource("2_ttkf7")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileHurtbox"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0.431373, 1)
+scale = Vector2(0.6, 0.6)
+
+[node name="Stars" type="Node2D" parent="."]
+
+[node name="DespawnCheck" type="Timer" parent="."]
+process_callback = 0
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="DespawnCheck" to="." method="_on_despawn_check_timeout"]

@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://da6gogretvhk5"]
+
+[ext_resource type="Script" uid="uid://cak2tl5yjmiya" path="res://interface/player_interface_components/skill_info_box.gd" id="1_dxryi"]
+[ext_resource type="LabelSettings" uid="uid://d2m1iuv3747bn" path="res://interface/label_settings/chiq_pro_ingame.tres" id="2_lrpw4"]
+[ext_resource type="PackedScene" uid="uid://qjaf3ty4mlax" path="res://interface/player_interface_components/combo_arrow/combo_arrow.tscn" id="3_sr5om"]
+
+[node name="SkillInfoBox" type="HBoxContainer"]
+script = ExtResource("1_dxryi")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Parry:"
+label_settings = ExtResource("2_lrpw4")
+
+[node name="ComboArrow" parent="." instance=ExtResource("3_sr5om")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+expand_mode = 2
+
+[node name="ComboArrow2" parent="." instance=ExtResource("3_sr5om")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+expand_mode = 2
+
+[node name="ComboArrow3" parent="." instance=ExtResource("3_sr5om")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+expand_mode = 2
+
+[node name="ComboArrow4" parent="." instance=ExtResource("3_sr5om")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+expand_mode = 2

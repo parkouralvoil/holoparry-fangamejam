@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dhumtif3ucnfo"]
 
 [ext_resource type="Script" uid="uid://cgktubn3y2ryf" path="res://skills/skills_tokino/skill_dream.gd" id="1_kaxxg"]
-[ext_resource type="PackedScene" uid="uid://4dqwmqw1wq16" path="res://projectiles/projectile_star.tscn" id="2_6g11q"]
+[ext_resource type="PackedScene" uid="uid://4dqwmqw1wq16" path="res://projectiles/stars/projectile_star.tscn" id="2_6g11q"]
 
 [node name="Dream" type="Node2D"]
 script = ExtResource("1_kaxxg")

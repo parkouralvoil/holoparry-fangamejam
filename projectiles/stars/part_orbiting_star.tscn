@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://cw1tm4m5ub2ht"]
+
+[ext_resource type="PackedScene" uid="uid://b46r3coymwvrh" path="res://projectiles/projectile_hurtbox.tscn" id="1_6gk4q"]
+[ext_resource type="Texture2D" uid="uid://bhyr5u6cn2u2" path="res://assets/sprites/holoparry_spritesheet.png" id="1_d8fep"]
+[ext_resource type="Script" uid="uid://6cpgmu2fgk1d" path="res://projectiles/stars/part_orbiting_star.gd" id="2_u6i51"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6i51"]
+atlas = ExtResource("1_d8fep")
+region = Rect2(129, 105, 54, 52)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d8fep"]
+radius = 12.0416
+
+[node name="OrbitingStar" type="Node2D"]
+script = ExtResource("2_u6i51")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = SubResource("AtlasTexture_u6i51")
+
+[node name="ProjectileHurtbox" parent="." instance=ExtResource("1_6gk4q")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileHurtbox"]
+shape = SubResource("CircleShape2D_d8fep")

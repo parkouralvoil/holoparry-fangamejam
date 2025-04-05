@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3mlpt00vp3n7"]
-
-[ext_resource type="Script" uid="uid://ckmg7rog3bffk" path="res://skills/skills_lui/skill_gun_ring.gd" id="1_5yarw"]
-[ext_resource type="PackedScene" uid="uid://4dqwmqw1wq16" path="res://projectiles/projectile_star.tscn" id="2_hb1qf"]
-
-[node name="GunRing" type="Node2D"]
-script = ExtResource("1_5yarw")
-_ProjectilePacked = ExtResource("2_hb1qf")

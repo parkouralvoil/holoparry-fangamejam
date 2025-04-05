@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="HoloParry FanGameJam"
-run/main_scene="uid://yhpjuq7wt8y8"
+run/main_scene="uid://boocc3ytyqwrv"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+run/max_fps=120
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="res://audio_bus/default_bus_layout.tres"
 
 [autoload]
 
@@ -21,6 +26,9 @@ EventBus="*res://globals/EventBus.gd"
 PT="*res://globals/ProjectTypes.gd"
 CombatHelper="*res://globals/CombatHelper.gd"
 SettingsValues="*res://globals/SettingsValues.gd"
+GlobalCharacterData="*res://globals/GlobalCharacterData.gd"
+SoundPlayer="*res://globals/SoundPlayer/SoundPlayer.tscn"
+SceneLoader="*res://globals/SceneLoader.gd"
 
 [debug]
 
@@ -34,6 +42,7 @@ gdscript/warnings/unsafe_call_argument=1
 
 folder_colors={
 "res://assets/": "yellow",
+"res://data/": "blue",
 "res://globals/": "gray",
 "res://interface/": "green",
 "res://skills/": "pink"

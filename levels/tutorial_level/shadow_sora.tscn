@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbrddesge5tpd"]
+
+[ext_resource type="Texture2D" uid="uid://blamx6asbsyh2" path="res://assets/sprites/character_sora/sora_hurt_idle.png" id="1_sqtuu"]
+[ext_resource type="Script" uid="uid://cdfs21wtkf2va" path="res://levels/tutorial_level/shadow_sora.gd" id="2_4fjnq"]
+[ext_resource type="PackedScene" uid="uid://4dqwmqw1wq16" path="res://projectiles/stars/projectile_star.tscn" id="3_1hxwv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1hxwv"]
+radius = 213.338
+
+[node name="ShadowSora" type="Sprite2D"]
+self_modulate = Color(0, 0, 0, 1)
+texture = ExtResource("1_sqtuu")
+flip_h = true
+script = ExtResource("2_4fjnq")
+_projectile_packed = ExtResource("3_1hxwv")
+
+[node name="Firerate" type="Timer" parent="."]
+autostart = true
+
+[node name="InstaKillBox" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InstaKillBox"]
+shape = SubResource("CircleShape2D_1hxwv")
+
+[connection signal="timeout" from="Firerate" to="." method="_on_firerate_timeout"]
+[connection signal="area_entered" from="InstaKillBox" to="." method="_on_insta_kill_box_area_entered"]

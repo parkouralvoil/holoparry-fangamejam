@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0b2ws6rkqbh1"]
+
+[ext_resource type="Script" uid="uid://bba5byg54b8v4" path="res://levels/freeze_frame/freeze_frame.gd" id="1_mrb8d"]
+
+[node name="FreezeFrame" type="Timer"]
+process_mode = 3
+one_shot = true
+script = ExtResource("1_mrb8d")

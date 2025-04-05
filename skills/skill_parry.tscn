@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dx4lho5v6e6r4"]
 
 [ext_resource type="Script" uid="uid://c14nvm6chqwjf" path="res://skills/skill_parry.gd" id="1_njad5"]
-[ext_resource type="PackedScene" uid="uid://d344ibvqccpwh" path="res://projectiles/parry_circle.tscn" id="2_gfxu0"]
-[ext_resource type="PackedScene" uid="uid://cqd6c8dm36q7q" path="res://projectiles/parry_attack_remover.tscn" id="3_wx552"]
+[ext_resource type="PackedScene" uid="uid://d344ibvqccpwh" path="res://projectiles/parry/parry_circle.tscn" id="2_gfxu0"]
+[ext_resource type="PackedScene" uid="uid://cqd6c8dm36q7q" path="res://projectiles/parry/parry_attack_remover.tscn" id="3_wx552"]
 
 [node name="ParrySkill" type="Node2D"]
 script = ExtResource("1_njad5")

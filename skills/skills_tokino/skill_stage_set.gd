@@ -5,10 +5,12 @@ extends BaseSkill
 var damage: int = 30
 var speed: float = 160
 
-func activate_skill() -> void:
+func activate_skill(fever_mode: bool) -> void:
 	var target_pos: Vector2
 	var target_direction: Vector2
 	var parriable: bool
+	
+	speed = 160 if not fever_mode else 280
 	
 	target_pos = CombatHelper.enemy_global_position if not _from_enemy \
 		else CombatHelper.player_global_position

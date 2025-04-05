@@ -24,5 +24,5 @@ func set_skill_collisions(from_enemy: bool) -> void: ## set by BaseMoveset
 	_from_enemy = from_enemy
 
 
-func activate_skill() -> void:
+func activate_skill(fever_mode: bool) -> void:
 	pass

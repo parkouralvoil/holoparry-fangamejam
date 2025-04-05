@@ -1,0 +1,160 @@
+[gd_scene load_steps=7 format=3 uid="uid://bfpcf1uduh2rv"]
+
+[ext_resource type="Texture2D" uid="uid://ddxrwcuw4f7o4" path="res://assets/beat_visual/hit_marker.png" id="1_5rqwa"]
+[ext_resource type="Script" uid="uid://coe56bl3iwtm6" path="res://interface/beat_visualiser/diamond_visual.gd" id="1_tiqlp"]
+[ext_resource type="Script" uid="uid://b06sq7gyslpiy" path="res://interface/beat_visualiser/diamond_lines_manager.gd" id="2_yfrpp"]
+[ext_resource type="PackedScene" uid="uid://gsbcygx5yyoi" path="res://interface/beat_visualiser/line_left.tscn" id="3_tiqlp"]
+[ext_resource type="PackedScene" uid="uid://bnde6x8gy3ppj" path="res://interface/beat_visualiser/line_right.tscn" id="4_yfrpp"]
+[ext_resource type="Texture2D" uid="uid://bvyjej4jxkyo8" path="res://assets/beat_visual/indicator_smaller.png" id="5_p1cv4"]
+
+[node name="DiamondVisual" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 637.0
+offset_top = 366.0
+offset_right = -426.0
+offset_bottom = -198.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_tiqlp")
+
+[node name="MainDiamond" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.694118)
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.5
+offset_top = -41.0
+offset_right = 70.5
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(37.5, 37.5)
+texture = ExtResource("1_5rqwa")
+expand_mode = 3
+
+[node name="LeftSideLines" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 37.0
+offset_right = 37.0
+pivot_offset = Vector2(20, 107.5)
+script = ExtResource("2_yfrpp")
+
+[node name="LineLeft" parent="LeftSideLines" instance=ExtResource("3_tiqlp")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 18.0
+offset_top = 0.0
+offset_right = 58.0
+offset_bottom = 75.0
+grow_horizontal = 1
+grow_vertical = 1
+texture = ExtResource("5_p1cv4")
+
+[node name="LineLeft2" parent="LeftSideLines" instance=ExtResource("3_tiqlp")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -180.0
+offset_top = 0.0
+offset_right = -140.0
+offset_bottom = 75.0
+grow_horizontal = 1
+grow_vertical = 1
+texture = ExtResource("5_p1cv4")
+
+[node name="LineLeft3" parent="LeftSideLines" instance=ExtResource("3_tiqlp")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -270.0
+offset_top = 0.0
+offset_right = -230.0
+offset_bottom = 75.0
+grow_horizontal = 1
+grow_vertical = 1
+texture = ExtResource("5_p1cv4")
+
+[node name="LineLeft4" parent="LeftSideLines" instance=ExtResource("3_tiqlp")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -270.0
+offset_top = 0.0
+offset_right = -230.0
+offset_bottom = 75.0
+grow_horizontal = 1
+grow_vertical = 1
+texture = ExtResource("5_p1cv4")
+
+[node name="RightSideLines" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 37.0
+offset_right = 37.0
+pivot_offset = Vector2(20, 107.5)
+script = ExtResource("2_yfrpp")
+
+[node name="LineRight" parent="RightSideLines" instance=ExtResource("4_yfrpp")]
+layout_mode = 1
+offset_left = 21.0
+offset_top = 0.0
+offset_right = 61.0
+offset_bottom = 75.0
+texture = ExtResource("5_p1cv4")
+_is_left_line = false
+
+[node name="LineRight2" parent="RightSideLines" instance=ExtResource("4_yfrpp")]
+visible = false
+layout_mode = 1
+offset_left = 219.0
+offset_top = 0.0
+offset_right = 259.0
+offset_bottom = 75.0
+texture = ExtResource("5_p1cv4")
+_is_left_line = false
+
+[node name="LineRight3" parent="RightSideLines" instance=ExtResource("4_yfrpp")]
+visible = false
+layout_mode = 1
+offset_left = 309.0
+offset_top = 0.0
+offset_right = 349.0
+offset_bottom = 75.0
+texture = ExtResource("5_p1cv4")
+_is_left_line = false
+
+[node name="LineRight4" parent="RightSideLines" instance=ExtResource("4_yfrpp")]
+visible = false
+layout_mode = 1
+offset_left = 309.0
+offset_top = 0.0
+offset_right = 349.0
+offset_bottom = 75.0
+texture = ExtResource("5_p1cv4")
+_is_left_line = false

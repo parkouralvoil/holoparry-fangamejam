@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://b50rw37ava7nr"]
+
+[ext_resource type="Script" uid="uid://xs25w04ox77q" path="res://globals/SoundPlayer/sound_player.gd" id="1_g6k5e"]
+
+[node name="SoundPlayer" type="Node"]
+process_mode = 3
+script = ExtResource("1_g6k5e")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pitch_scale = 0.95
+bus = &"Sound"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+pitch_scale = 0.95
+bus = &"Sound"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+pitch_scale = 0.95
+bus = &"Sound"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="."]
+pitch_scale = 0.95
+bus = &"Sound"

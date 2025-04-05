@@ -1,15 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjj7jv27knuec"]
+[gd_scene load_steps=9 format=3 uid="uid://bjj7jv27knuec"]
 
 [ext_resource type="Script" uid="uid://cn8gco1x8g5r1" path="res://interface/player_interface_components/character_info.gd" id="1_3oo3u"]
 [ext_resource type="Texture2D" uid="uid://bsm4p8up35xyf" path="res://icon.svg" id="1_ihxx7"]
-[ext_resource type="Resource" uid="uid://cflfyogpk7t1i" path="res://interface/player_interface_components/player_info_state.tres" id="2_15nlm"]
-[ext_resource type="LabelSettings" uid="uid://d2m1iuv3747bn" path="res://interface/label_settings/chiq_pro_ingame.tres" id="2_vex74"]
+[ext_resource type="Texture2D" uid="uid://dmt8kw7ga5ygr" path="res://assets/sprites/projectiles.png" id="2_vex74"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3oo3u"]
 bg_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vex74"]
 bg_color = Color(0.349697, 0.625674, 0.857558, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15nlm"]
+bg_color = Color(0.847864, 0.503529, 0.204136, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15nlm"]
+atlas = ExtResource("2_vex74")
+region = Rect2(42, 41, 12, 11)
+
+[sub_resource type="Gradient" id="Gradient_ctrjd"]
+offsets = PackedFloat32Array(0, 0.726667, 1)
+colors = PackedColorArray(0.188235, 0.717647, 0.478431, 0.513726, 0.270562, 0.675921, 0.710784, 0.690196, 0.499505, 0.591071, 0.90527, 0)
 
 [node name="PlayerInfo" type="VBoxContainer"]
 anchors_preset = 8
@@ -19,36 +29,11 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -132.0
 offset_top = -52.0
-offset_right = 132.0
+offset_right = 198.0
 offset_bottom = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3oo3u")
-_resource_state = ExtResource("2_15nlm")
-
-[node name="LabelParry" type="Label" parent="."]
-unique_name_in_owner = true
-layout_mode = 2
-text = "- Parry:"
-label_settings = ExtResource("2_vex74")
-
-[node name="LabelSkill1" type="Label" parent="."]
-unique_name_in_owner = true
-layout_mode = 2
-text = "- Skill 1:"
-label_settings = ExtResource("2_vex74")
-
-[node name="LabelSkill2" type="Label" parent="."]
-unique_name_in_owner = true
-layout_mode = 2
-text = "- Skill 2: "
-label_settings = ExtResource("2_vex74")
-
-[node name="LabelSkill3" type="Label" parent="."]
-unique_name_in_owner = true
-layout_mode = 2
-text = "- Skill 3: "
-label_settings = ExtResource("2_vex74")
 
 [node name="HBox" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -63,12 +48,40 @@ size_flags_vertical = 8
 texture = ExtResource("1_ihxx7")
 expand_mode = 3
 
-[node name="HPBar" type="ProgressBar" parent="HBox"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
+[node name="VBoxContainer" type="VBoxContainer" parent="HBox"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="HPBar" type="ProgressBar" parent="HBox/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 25)
+layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_styles/background = SubResource("StyleBoxFlat_3oo3u")
 theme_override_styles/fill = SubResource("StyleBoxFlat_vex74")
 step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="FeverBar" type="ProgressBar" parent="HBox/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_styles/background = SubResource("StyleBoxFlat_3oo3u")
+theme_override_styles/fill = SubResource("StyleBoxFlat_15nlm")
+step = 1.0
+value = 50.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-3, 139)
+emitting = false
+amount = 60
+texture = SubResource("AtlasTexture_15nlm")
+direction = Vector2(1, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 250.0
+initial_velocity_max = 300.0
+color_ramp = SubResource("Gradient_ctrjd")

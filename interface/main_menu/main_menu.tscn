@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://boocc3ytyqwrv"]
+[gd_scene load_steps=15 format=3 uid="uid://boocc3ytyqwrv"]
 
 [ext_resource type="Script" uid="uid://ckgmthbm3m4lm" path="res://interface/main_menu/main_menu.gd" id="1_hm0ms"]
 [ext_resource type="Texture2D" uid="uid://dufr1gkplf10l" path="res://assets/interface/Title_screen_bg_holoparry_high_contrast.png" id="1_x8uof"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dmet5ch1jofw" path="res://assets/interface/HoloParry_title_buttons/Settings_selected.png" id="8_cr5ul"]
 [ext_resource type="Texture2D" uid="uid://c44f8oeyimgg0" path="res://assets/interface/HoloParry_title_buttons/Quit.png" id="9_38238"]
 [ext_resource type="Texture2D" uid="uid://cy62oyc1hf4nc" path="res://assets/interface/HoloParry_title_buttons/Quit_selected.png" id="10_aukln"]
+[ext_resource type="PackedScene" uid="uid://coety5pch1axv" path="res://interface/main_menu/character_selection/character_selection.tscn" id="12_qt2eg"]
 [ext_resource type="PackedScene" uid="uid://ry6eb07xx044" path="res://interface/main_menu/settings/settings.tscn" id="12_rkwbc"]
 [ext_resource type="FontFile" uid="uid://dag7s301mbfag" path="res://assets/fonts/ChiqPro.ttf" id="13_rkwbc"]
 
@@ -103,11 +104,8 @@ texture_hover = ExtResource("10_aukln")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="CharacterSelection" type="MarginContainer" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="CharacterSelection" parent="." instance=ExtResource("12_qt2eg")]
+layout_mode = 1
 
 [node name="Settings" parent="." instance=ExtResource("12_rkwbc")]
 visible = false

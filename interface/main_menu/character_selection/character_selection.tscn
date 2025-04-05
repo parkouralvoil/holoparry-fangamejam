@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://coety5pch1axv"]
+
+[ext_resource type="LabelSettings" uid="uid://c0dfukrfgh4x0" path="res://interface/label_settings/chiq_pro_settings.tres" id="1_km5dv"]
+[ext_resource type="Script" uid="uid://c226yfps4wtr6" path="res://interface/main_menu/character_selection/character_selection.gd" id="1_rhyw8"]
+[ext_resource type="PackedScene" uid="uid://d3g7wvhlmiq2f" path="res://interface/main_menu/character_selection/character_selection_grid.tscn" id="3_h20o5"]
+[ext_resource type="FontFile" uid="uid://dag7s301mbfag" path="res://assets/fonts/ChiqPro.ttf" id="4_h20o5"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_1am88"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_qi4fw"]
+
+[node name="CharacterSelection" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+script = ExtResource("1_rhyw8")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBox" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxPlayer" type="VBoxContainer" parent="VBox/HBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBox/HBox/VBoxPlayer"]
+layout_mode = 2
+text = "Choose Your Character"
+label_settings = ExtResource("1_km5dv")
+
+[node name="PlayerGrid" parent="VBox/HBox/VBoxPlayer" instance=ExtResource("3_h20o5")]
+unique_name_in_owner = true
+layout_mode = 2
+_character_button_group = SubResource("ButtonGroup_1am88")
+
+[node name="Spacer" type="Control" parent="VBox/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxEnemy" type="VBoxContainer" parent="VBox/HBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBox/HBox/VBoxEnemy"]
+layout_mode = 2
+text = "Choose Enemy Character"
+label_settings = ExtResource("1_km5dv")
+
+[node name="EnemyGrid" parent="VBox/HBox/VBoxEnemy" instance=ExtResource("3_h20o5")]
+unique_name_in_owner = true
+layout_mode = 2
+_character_button_group = SubResource("ButtonGroup_qi4fw")
+
+[node name="Start" type="Button" parent="VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_h20o5")
+theme_override_font_sizes/font_size = 40
+text = "START"

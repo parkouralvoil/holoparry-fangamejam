@@ -30,9 +30,9 @@ func _on_button_play_ai_pressed() -> void:
 	_return_button.show()
 	_character_selection_screen.show()
 
+
 func _on_button_play_tutorial_pressed() -> void:
-	print_debug("start tutorial")
-	## change scene to Tutorial level
+	SceneLoader.goto_tutorial()
 
 func _on_button_settings_pressed() -> void:
 	_title_screen.hide()
