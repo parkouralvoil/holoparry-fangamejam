@@ -6,8 +6,6 @@ class_name BeatVisualizer
 @onready var _label_quality: Label = %LabelQuality
 @onready var _timer_hide_quality: Timer = %TimerHideQuality
 
-var _main_tween: Tween
-
 ## beat quality stuff
 var _late_available: bool = false ## set to true after the first beat
 static var current_beat_quality: PT.BeatQuality

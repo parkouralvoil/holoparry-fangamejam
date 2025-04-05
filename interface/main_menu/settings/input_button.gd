@@ -6,6 +6,14 @@ class_name InputButton
 
 @onready var _label: Label = %Label
 
+
+func _ready() -> void:
+	if _input_control == 'beat_0':
+		_label.text = InputMap.action_get_events('combo_down')[0].as_text()
+	else:
+		_label.text = InputMap.action_get_events('combo_up')[0].as_text()
+
+
 func _input(event: InputEvent) -> void:
 	# set keybind
 	if self.button_pressed:
@@ -26,13 +34,14 @@ func _toggled(toggled_on: bool) -> void:
 	else:
 		self._update_label()
 
+
 func _update_label() -> void:
 	if self._input_event:
 		self._label.set_text(OS.get_keycode_string(self._input_event.keycode))
 	else:
 		self._label.set_text('No key selected')
 
-func set_input_event(event: InputEventKey):
+func set_input_event(event: InputEventKey) -> void:
 	self._input_event = event
 	SettingsValues.change_controls(event, self._input_control)
 	

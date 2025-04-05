@@ -43,15 +43,14 @@ func get_remaining_distance() -> float:
 		return -(current_pos - final_pos)
 	else:
 		return current_pos - final_pos
-	"""
-	Right side:
-		final pos = 33
-		late offset = 21
-		perfect = [33, 43], 0 <= difference <= 10
-		late = [21, 33),  -12 <= difference < 0
-		early = [43, 73], 10 < difference < 30
-	"""
-
+"""
+Right side:
+	final pos = 33
+	late offset = 21
+	perfect = [33, 43], 0 <= difference <= 10
+	late = [21, 33),  -12 <= difference < 0
+	early = [43, 73], 10 < difference < 30
+"""
 
 func _on_line_reached_final_pos() -> void:
 	_current_index = (_current_index + 1) % _num_of_lines

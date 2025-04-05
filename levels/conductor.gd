@@ -24,7 +24,7 @@ var current_measure: int = 0
 func _ready() -> void:
 	play_from_beat(0, 0)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if playing:
 		song_position = get_playback_position() + AudioServer.get_time_since_last_mix()
 		song_position -= AudioServer.get_output_latency()

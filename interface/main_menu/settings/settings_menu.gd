@@ -7,14 +7,15 @@ class_name SettingsMenu
 @onready var _action_list: VBoxContainer = %ActionList
 
 func _ready() -> void:
-	pass
+	_slider_music.value = SettingsValues.volume['Music']
+	_slider_sound.value = SettingsValues.volume['Sound']
 
 # --- Audio
 
 func _on_music_value_changed(value: float) -> void:
-	SettingsValues.change_volume(value, 'music')
+	SettingsValues.change_volume(value, 'Music')
 
 func _on_sound_value_changed(value: float) -> void:
-	SettingsValues.change_volume(value, 'sound')
+	SettingsValues.change_volume(value, 'Sound')
 
 # --- Controls

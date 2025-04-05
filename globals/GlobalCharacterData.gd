@@ -15,11 +15,11 @@ func get_character_player() -> ResourceCharacterData:
 func get_character_AI() -> ResourceCharacterData:
 	return _selected_character_AI
 
-func set_character_player(char: ResourceCharacterData) -> void:
-	_selected_character_player = char
+func set_character_player(char_data: ResourceCharacterData) -> void:
+	_selected_character_player = char_data
 
-func set_character_AI(char: ResourceCharacterData) -> void:
-	_selected_character_AI = char
+func set_character_AI(char_data: ResourceCharacterData) -> void:
+	_selected_character_AI = char_data
 
 func all_characters_set() -> bool:
 	if _selected_character_player and _selected_character_AI:

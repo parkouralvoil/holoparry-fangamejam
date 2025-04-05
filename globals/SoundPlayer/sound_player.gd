@@ -11,7 +11,7 @@ func _ready() -> void:
 	_max_players = _audio_stream_players.size()
 
 
-func play_sound(stream: AudioStream, volume: float = -14) -> void:
+func play_sound(stream: AudioStream, volume: float = -5) -> void:
 	var current_player := _audio_stream_players[_current_index]
 	_current_index = (_current_index + 1) % _max_players
 	current_player.volume_db = volume

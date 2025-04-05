@@ -8,9 +8,9 @@ class_name MainMenu
 @onready var _return_button: Button = $ReturnButton
 
 ## Menus
-@onready var _title_screen := $TitleScreen
-@onready var _character_selection_screen := $CharacterSelection
-@onready var _settings_screen := $SettingsMenu
+@onready var _title_screen: Control = $TitleScreen
+@onready var _character_selection_screen: Control = $CharacterSelection
+@onready var _settings_screen: Control= $SettingsMenu
 
 func _ready() -> void:
 	_button_play_ai.pressed.connect(_on_button_play_ai_pressed)

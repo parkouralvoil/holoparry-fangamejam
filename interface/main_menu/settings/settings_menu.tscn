@@ -26,10 +26,9 @@ custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_brg15")
 theme_override_font_sizes/font_size = 25
-current_tab = 1
+current_tab = 0
 
 [node name="Audio" type="MarginContainer" parent="TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -73,6 +72,7 @@ size_flags_vertical = 4
 value = 100.0
 
 [node name="Controls" type="MarginContainer" parent="TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -91,7 +91,7 @@ _input_event = SubResource("InputEventKey_x6wae")
 _input_control = "beat_0"
 
 [node name="Action" parent="TabContainer/Controls/ActionList/Beat0/HBox" index="0"]
-text = "Beat 0"
+text = "Beat 0/Down"
 
 [node name="Label" parent="TabContainer/Controls/ActionList/Beat0/HBox" index="2"]
 text = "Down"
@@ -103,7 +103,7 @@ _input_event = SubResource("InputEventKey_m2k76")
 _input_control = "beat_1"
 
 [node name="Action" parent="TabContainer/Controls/ActionList/Beat1/HBox" index="0"]
-text = "Beat 1"
+text = "Beat 1/Up"
 
 [node name="Label" parent="TabContainer/Controls/ActionList/Beat1/HBox" index="2"]
 text = "Up"

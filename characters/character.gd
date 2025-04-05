@@ -27,14 +27,11 @@ var _player_combo: Array[PT.Combo] = []:
 	set(val):
 		_player_combo = val
 		print_debug("hello")
-var _rotation_speed: float = TAU * 4 # TAU is a full circle, this is 4 full rotations per sec
-var _theta: float
 
 var _parry_invulnerability: bool = false
 var _beat_input_available: bool = true
 
 @onready var _SpriteCharacter: Sprite2D = $SpriteCharacter
-@onready var _SpriteHitbox: Sprite2D = $SpriteCharacter
 @onready var _t_hurt_duration: Timer = $HurtDuration
 
 
@@ -119,7 +116,7 @@ func _increase_fever_by_beat_quality(beat_quality: PT.BeatQuality) -> void:
 			pass
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	velocity = _move_direction.normalized() * _speed
 	if _move_direction != Vector2.ZERO:
 		_face_direction = _move_direction

@@ -27,8 +27,6 @@ var _character_resource_state: CharacterInfoState
 var _move_direction: Vector2
 var _face_direction: Vector2 = _move_direction
 var _speed: float = 100.0
-var _rotation_speed: float = TAU * 4 # TAU is a full circle, this is 4 full rotations per sec
-var _theta: float
 
 var _attack_counter: int = 0
 var _attack_threshold: int = 4
