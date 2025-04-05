@@ -11,8 +11,18 @@ var _player_moveset_skill_info: Dictionary[String, String] = {}
 @onready var _ComboHBox: HBoxContainer = %ComboHBox
 @onready var _AvailableSkill: Label = %AvailableSkill
 
+@onready var _player_info: CharacterInfoUI = $PlayerInfo
 @onready var _enemy_info: CharacterInfoUI = $EnemyInfo
 #@onready var _HPBar: ProgressBar = $HBoxContainer/VBoxContainer/HPBar
+
+
+func update_portraits(player_portrait: Texture, enemy_portrait: Texture) -> void:
+	## called by round manager
+	if player_portrait:
+		_player_info.assign_character_portrait(player_portrait)
+	if enemy_portrait:
+		_enemy_info.assign_character_portrait(enemy_portrait)
+
 
 func _ready() -> void:
 	##EventBus.beat_window_changed.connect(_on_beat_window_changed)

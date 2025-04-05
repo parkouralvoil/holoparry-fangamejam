@@ -3,11 +3,6 @@ extends Sprite2D
 
 @export var _projectile_packed: PackedScene
 
-@onready var _insta_killbox: Area2D = $InstaKillBox
-
-func _ready() -> void:
-	pass
-
 func _on_firerate_timeout() -> void:
 	_shoot(_projectile_packed,
 		Vector2.DOWN,

@@ -1,12 +1,20 @@
-[gd_resource type="Resource" script_class="ResourceCharacterData" load_steps=4 format=3 uid="uid://dcu2dwmfmj7qh"]
+[gd_resource type="Resource" script_class="ResourceCharacterData" load_steps=5 format=3 uid="uid://dcu2dwmfmj7qh"]
 
 [ext_resource type="PackedScene" uid="uid://cpp2y5j2rhpsx" path="res://characters/character_tokino.tscn" id="1_8jmuw"]
 [ext_resource type="Script" uid="uid://bogdgykiumap1" path="res://data/resource_character_data.gd" id="1_jx3ep"]
 [ext_resource type="PackedScene" uid="uid://3jl7e2h37swr" path="res://enemies/enemy_tokino.tscn" id="2_04eh2"]
+[ext_resource type="Texture2D" uid="uid://bsm4p8up35xyf" path="res://icon.svg" id="3_04eh2"]
 
 [resource]
 script = ExtResource("1_jx3ep")
 vtuber_name = "Tokino Sora"
 character_scene = ExtResource("1_8jmuw")
 enemy_scene = ExtResource("2_04eh2")
+portrait = ExtResource("3_04eh2")
+skill_names = "Star Melody
+Stage Set
+Dream!"
+skill_desc = "- Shoots 3 stars
+- Cast a big slow moving star
+- Summon orbiting stars"
 metadata/_custom_type_script = "uid://bogdgykiumap1"

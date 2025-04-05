@@ -40,7 +40,8 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
 
-[node name="Character" type="TextureRect" parent="HBox"]
+[node name="CharPortrait" type="TextureRect" parent="HBox"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_horizontal = 10

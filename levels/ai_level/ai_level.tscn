@@ -453,6 +453,7 @@ grow_vertical = 1
 mouse_filter = 2
 
 [node name="PlayerInterface" parent="CanvasLayer" instance=ExtResource("9_po7hq")]
+unique_name_in_owner = true
 mouse_filter = 2
 
 [node name="Conductor" parent="." instance=ExtResource("7_3ipyh")]

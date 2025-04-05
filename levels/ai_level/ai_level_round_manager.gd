@@ -16,6 +16,7 @@ var _game_finished: bool = false
 @onready var _start_pos_enemy: Marker2D = $StartPosEnemy
 @onready var _t_freeze_frame: FreezeFrame = $FreezeFrame
 
+@onready var _player_interface: PlayerInterface = %PlayerInterface
 @onready var _round_ui: RoundUI = %RoundUI
 
 
@@ -29,7 +30,9 @@ func _ready() -> void:
 	_round_ui.return_pressed.connect(_on_return_pressed)
 	
 	begin_game(_player_resource_data.character_scene, _enemy_resource_data.enemy_scene)
-	
+	_player_interface.update_portraits(_player_resource_data.portrait,
+			_enemy_resource_data.portrait
+		)
 
 
 func begin_game(player_packed: PackedScene, enemy_packed: PackedScene) -> void:

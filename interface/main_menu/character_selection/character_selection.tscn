@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://coety5pch1axv"]
+[gd_scene load_steps=8 format=3 uid="uid://coety5pch1axv"]
 
 [ext_resource type="LabelSettings" uid="uid://c0dfukrfgh4x0" path="res://interface/label_settings/chiq_pro_settings.tres" id="1_km5dv"]
 [ext_resource type="Script" uid="uid://c226yfps4wtr6" path="res://interface/main_menu/character_selection/character_selection.gd" id="1_rhyw8"]
+[ext_resource type="PackedScene" uid="uid://b3nqdbkj1k7in" path="res://interface/main_menu/character_selection/character_moveset.tscn" id="3_1am88"]
 [ext_resource type="PackedScene" uid="uid://d3g7wvhlmiq2f" path="res://interface/main_menu/character_selection/character_selection_grid.tscn" id="3_h20o5"]
 [ext_resource type="FontFile" uid="uid://dag7s301mbfag" path="res://assets/fonts/ChiqPro.ttf" id="4_h20o5"]
 
@@ -30,11 +31,17 @@ size_flags_vertical = 3
 
 [node name="VBoxPlayer" type="VBoxContainer" parent="VBox/HBox"]
 layout_mode = 2
+size_flags_horizontal = 2
 
 [node name="Label" type="Label" parent="VBox/HBox/VBoxPlayer"]
 layout_mode = 2
+size_flags_horizontal = 0
 text = "Choose Your Character"
 label_settings = ExtResource("1_km5dv")
+
+[node name="PlayerMoveset" parent="VBox/HBox/VBoxPlayer" instance=ExtResource("3_1am88")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="PlayerGrid" parent="VBox/HBox/VBoxPlayer" instance=ExtResource("3_h20o5")]
 unique_name_in_owner = true
@@ -42,16 +49,24 @@ layout_mode = 2
 _character_button_group = SubResource("ButtonGroup_1am88")
 
 [node name="Spacer" type="Control" parent="VBox/HBox"]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 4
 
 [node name="VBoxEnemy" type="VBoxContainer" parent="VBox/HBox"]
 layout_mode = 2
+size_flags_horizontal = 10
 
 [node name="Label" type="Label" parent="VBox/HBox/VBoxEnemy"]
 layout_mode = 2
+size_flags_horizontal = 8
 text = "Choose Enemy Character"
 label_settings = ExtResource("1_km5dv")
+horizontal_alignment = 2
+
+[node name="EnemyMoveset" parent="VBox/HBox/VBoxEnemy" instance=ExtResource("3_1am88")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="EnemyGrid" parent="VBox/HBox/VBoxEnemy" instance=ExtResource("3_h20o5")]
 unique_name_in_owner = true

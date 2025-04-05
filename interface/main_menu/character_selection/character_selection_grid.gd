@@ -14,6 +14,8 @@ func _ready() -> void:
 		button.button_group = _character_button_group
 		button.toggle_mode = true
 		button.text = c.vtuber_name
+		button.custom_minimum_size = Vector2(75, 75)
+		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		button.pressed.connect(_on_character_button_pressed.bind(c))
 		add_child(button)
 

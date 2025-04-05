@@ -17,7 +17,7 @@ string_combo = "0"
 [node name="Gun" parent="." instance=ExtResource("3_k23cg")]
 visible = false
 _ProjectilePacked = ExtResource("4_al6w7")
-skill_name = "Feather Shot"
+skill_name = "Doubleshot"
 string_combo = "01"
 attack_parriable_chance = 0.2
 

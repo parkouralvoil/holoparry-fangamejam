@@ -481,12 +481,13 @@ Combo: Press UP or DOWN on the beat.
 
 Attack: Press SPACE to unleash the combo skill.
 
-- Missing your input will reset the combo!
+- Off beat input will reset the combo!
 
 Parry: Only yellow projectiles can be parried.
 
 Fever: After attacking enough times, fever mode will activate and make your attacks stronger.
 
+Your hitbox is the blue circle at the center of your VTuber.
 
 Once you're ready, touch the shadow on the corner."
 label_settings = SubResource("LabelSettings_7c7i4")

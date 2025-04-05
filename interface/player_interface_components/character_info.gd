@@ -6,6 +6,10 @@ class_name CharacterInfoUI
 @onready var _hp_bar: ProgressBar = %HPBar
 @onready var _fever_bar: ProgressBar = %FeverBar
 @onready var _cpu_partciles: CPUParticles2D = $CPUParticles2D
+@onready var _char_portrait: TextureRect = %CharPortrait
+
+func assign_character_portrait(portrait: Texture) -> void:
+	_char_portrait.texture = portrait
 
 func _ready() -> void:
 	assert(_character_info_state)

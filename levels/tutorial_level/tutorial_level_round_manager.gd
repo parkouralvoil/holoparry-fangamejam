@@ -22,6 +22,9 @@ func _ready() -> void:
 	_round_ui.return_pressed.connect(_on_return_pressed)
 	
 	begin_game(_tutorial_player_resource_data.character_scene)
+	_player_interface.update_portraits(_tutorial_player_resource_data.portrait,
+			null
+		)
 
 
 func begin_game(player_packed: PackedScene) -> void:

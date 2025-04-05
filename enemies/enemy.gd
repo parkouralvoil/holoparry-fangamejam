@@ -125,7 +125,7 @@ func _change_anim() -> void:
 
 func defeated() -> void:
 	var defeated_sprite: DefeatedCharacter = _DefeatedPackedScene.instantiate()
-	defeated_sprite.global_position = global_position
+	defeated_sprite.global_position = _SpriteCharacter.global_position
 	defeated_sprite.texture = _texture_hurt
 	defeated_sprite.sprite_scale = _SpriteCharacter.scale
 	SoundPlayer.play_sound(_audio_death_scream)
