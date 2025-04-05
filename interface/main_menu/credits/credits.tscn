@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dku6fs23oumqg"]
+[gd_scene load_steps=4 format=3 uid="uid://dku6fs23oumqg"]
 
 [ext_resource type="LabelSettings" uid="uid://c0dfukrfgh4x0" path="res://interface/label_settings/chiq_pro_settings.tres" id="2_8nwx8"]
+[ext_resource type="FontFile" uid="uid://dag7s301mbfag" path="res://assets/fonts/ChiqPro.ttf" id="2_bcafs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j0xbk"]
+font = ExtResource("2_bcafs")
+font_size = 20
 
 [node name="Credits" type="CenterContainer"]
 anchors_preset = 15
@@ -32,7 +37,16 @@ theme_override_constants/margin_bottom = 20
 
 [node name="credits" type="Label" parent="VBox/PanelContainer/MarginContainer"]
 layout_mode = 2
-text = "Music: 
+text = "Programmers:
+1. parkah
+2. BluNuggets
+3. n'ada
+
+Artists:
+1. iwame
+2. eevee
+
+Music: 
 1. https://www.youtube.com/watch?v=iAt5_n4e0IU
 2. https://www.youtube.com/watch?v=8SNVOJvvrso
 
@@ -45,4 +59,4 @@ Sora:
 Lui:
 1. https://www.youtube.com/watch?v=OYc_V_3nE5A
 2. https://www.youtube.com/watch?v=3_gogh1UxMQ"
-label_settings = ExtResource("2_8nwx8")
+label_settings = SubResource("LabelSettings_j0xbk")

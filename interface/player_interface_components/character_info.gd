@@ -11,6 +11,11 @@ class_name CharacterInfoUI
 func assign_character_portrait(portrait: Texture) -> void:
 	_char_portrait.texture = portrait
 
+
+func flip_portrait() -> void:
+	_char_portrait.flip_h = true
+
+
 func _ready() -> void:
 	assert(_character_info_state)
 	#_player_info_state.combo_changed.connect(_on_state_combo_changed)

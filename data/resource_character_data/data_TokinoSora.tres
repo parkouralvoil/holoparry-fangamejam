@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cpp2y5j2rhpsx" path="res://characters/character_tokino.tscn" id="1_8jmuw"]
 [ext_resource type="Script" uid="uid://bogdgykiumap1" path="res://data/resource_character_data.gd" id="1_jx3ep"]
 [ext_resource type="PackedScene" uid="uid://3jl7e2h37swr" path="res://enemies/enemy_tokino.tscn" id="2_04eh2"]
-[ext_resource type="Texture2D" uid="uid://bsm4p8up35xyf" path="res://icon.svg" id="3_04eh2"]
+[ext_resource type="Texture2D" uid="uid://hvppbwocpptg" path="res://assets/portraits/SORA COLORED.png" id="3_04eh2"]
 
 [resource]
 script = ExtResource("1_jx3ep")

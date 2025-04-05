@@ -10,3 +10,8 @@ func update_display(portrait: Texture, skill_names: String, desc: String) -> voi
 	_char_portrait.texture = portrait
 	_skill_names.text = skill_names
 	_skill_desc.text = desc
+	_char_portrait.modulate = Color.WHITE
+
+
+func flip_portrait() -> void:
+	_char_portrait.flip_h = true

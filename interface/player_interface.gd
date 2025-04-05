@@ -35,6 +35,7 @@ func _ready() -> void:
 	for c in _SkillComboInfos.get_children():
 		if c is SkillInfoBox:
 			_skill_combo_info_boxes.append(c)
+	_player_info.flip_portrait()
 
 
 func _on_player_combo_updated(new_combo: Array[PT.Combo]) -> void:

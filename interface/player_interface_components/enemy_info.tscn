@@ -33,6 +33,23 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
 
+[node name="Control" type="Control" parent="HBox"]
+layout_mode = 2
+
+[node name="CharPortrait" type="TextureRect" parent="HBox/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+offset_left = 216.0
+offset_top = -37.0
+offset_right = 416.0
+offset_bottom = 254.0
+size_flags_horizontal = 10
+size_flags_vertical = 8
+texture = ExtResource("2_6yscr")
+expand_mode = 4
+stretch_mode = 5
+
 [node name="VBoxContainer" type="VBoxContainer" parent="HBox"]
 layout_mode = 2
 size_flags_vertical = 8
@@ -62,17 +79,8 @@ step = 1.0
 value = 50.0
 fill_mode = 1
 
-[node name="CharPortrait" type="TextureRect" parent="HBox"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 8
-texture = ExtResource("2_6yscr")
-expand_mode = 3
-
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(319, 175)
+position = Vector2(391, 174)
 emitting = false
 amount = 60
 texture = SubResource("AtlasTexture_mhypy")

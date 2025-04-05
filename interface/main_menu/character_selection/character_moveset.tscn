@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b3nqdbkj1k7in"]
 
 [ext_resource type="Script" uid="uid://ure2ojkdo4sf" path="res://interface/main_menu/character_selection/character_moveset.gd" id="1_0d65l"]
-[ext_resource type="Texture2D" uid="uid://bsm4p8up35xyf" path="res://icon.svg" id="1_pchl4"]
+[ext_resource type="Texture2D" uid="uid://hvppbwocpptg" path="res://assets/portraits/SORA COLORED.png" id="2_eht6r"]
 [ext_resource type="LabelSettings" uid="uid://d2m1iuv3747bn" path="res://interface/label_settings/chiq_pro_ingame.tres" id="2_k3icu"]
 [ext_resource type="FontFile" uid="uid://dag7s301mbfag" path="res://assets/fonts/ChiqPro.ttf" id="4_eht6r"]
 
@@ -20,10 +20,12 @@ layout_mode = 2
 
 [node name="CharPortrait" type="TextureRect" parent="VBox"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 200)
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(200, 250)
 layout_mode = 2
-texture = ExtResource("1_pchl4")
-stretch_mode = 3
+texture = ExtResource("2_eht6r")
+expand_mode = 2
+stretch_mode = 5
 
 [node name="moveset" type="Label" parent="VBox"]
 layout_mode = 2

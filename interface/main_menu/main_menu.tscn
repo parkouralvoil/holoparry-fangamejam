@@ -104,7 +104,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("10_iefpf")
 texture_pressed = ExtResource("11_16e0j")
-texture_hover = ExtResource("8_cr5ul")
+texture_hover = ExtResource("11_16e0j")
 ignore_texture_size = true
 stretch_mode = 5
 
